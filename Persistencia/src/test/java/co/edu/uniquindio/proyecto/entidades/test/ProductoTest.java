@@ -1,4 +1,5 @@
 package co.edu.uniquindio.proyecto.entidades.test;
+import co.edu.uniquindio.proyecto.entidades.Persona;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import org.junit.jupiter.api.Assertions;
@@ -6,9 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -54,9 +59,18 @@ public class ProductoTest {
     @Test
     @Sql("classpath:datos.sql")
     public void buscarTest() {
-
         productoRepo.findById("1").orElse(null);
         Assertions.assertEquals("1",  productoRepo.findById("1").orElse(null).getCodigo_producto());
+    }
+
+
+    @Test
+    @Sql("classpath:datos.sql")
+    public void paginadorProducto(){
+        Pageable paginador = PageRequest.of(0,2);
+
+        Page<Producto> lista = productoRepo.findAll(paginador);
+        System.out.println(lista.stream().collect(Collectors.toList()));
     }
 
 }
