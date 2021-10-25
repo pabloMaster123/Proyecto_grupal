@@ -21,7 +21,7 @@ public class Producto implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    private String codigo_producto;
+    private String codigo;
 
     @Column(nullable = false,length = 30)
     private String nombre_producto;
@@ -45,7 +45,7 @@ public class Producto implements Serializable {
     private Integer descuento;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "codigo_producto")
+    @OneToMany(mappedBy = "producto")
     private List<Comentario> comentarios;
 
     @ToString.Exclude

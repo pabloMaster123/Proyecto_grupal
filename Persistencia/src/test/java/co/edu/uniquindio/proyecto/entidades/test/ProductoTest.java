@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto.entidades.test;
 import co.edu.uniquindio.proyecto.entidades.Persona;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
+import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +61,7 @@ public class ProductoTest {
     @Sql("classpath:datos.sql")
     public void buscarTest() {
         productoRepo.findById("1").orElse(null);
-        Assertions.assertEquals("1",  productoRepo.findById("1").orElse(null).getCodigo_producto());
+        Assertions.assertEquals("1",  productoRepo.findById("1").orElse(null).getCodigo());
     }
 
 
@@ -71,6 +72,14 @@ public class ProductoTest {
 
         Page<Producto> lista = productoRepo.findAll(paginador);
         System.out.println(lista.stream().collect(Collectors.toList()));
+    }
+
+    @Test
+    @Sql("classpath:datos.sql")
+    public void listarProductosYComentarios(){
+        List<Object[]> respuesta = productoRepo.listaProductosYComentario();
+        respuesta.forEach(objects -> System.out.println(objects[0] + " --- " + objects[1]));
+        Assertions.assertEquals(5,respuesta.size());
     }
 
 }

@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades.test;
 import co.edu.uniquindio.proyecto.entidades.Ciudad;
+import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.CiudadRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -52,12 +53,20 @@ public class CiudadTest {
         Ciudad ciudadBuscada = ciudadRepo.findById("1").orElse(null);
         System.out.println(ciudadBuscada.getNombre());
     }
+
     @Test
     @Sql("classpath:datos.sql")
     public void buscarTest() {
-
         ciudadRepo.findById("1").orElse(null);
         Assertions.assertEquals("1",  ciudadRepo.findById("1").orElse(null).getCodigo());
+    }
+
+    @Test
+    @Sql("classpath:datos.sql")
+    public void listarUsuariosCuidadTest(){
+        List<Usuario> usuarios = ciudadRepo.listarUsuarios("armenia");
+        usuarios.forEach(System.out::println);
+        Assertions.assertEquals(1,usuarios.size());
     }
 
 }

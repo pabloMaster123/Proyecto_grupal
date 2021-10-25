@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,15 +22,19 @@ public class Usuario extends Persona implements Serializable {
     private Ciudad cuidad;
 
     @OneToMany(mappedBy = "codigo_usuario")
+    @ToString.Exclude
     private List<Comentario> comentarios;
 
     @OneToMany(mappedBy = "codigo_usuario")
+    @ToString.Exclude
     private List<Compra>compras;
 
     @OneToMany(mappedBy = "codigo_usuario")
+    @ToString.Exclude
     private List<DetalleSubasta> detalleSubastas;
 
     @OneToMany(mappedBy = "codigo_usuario")
+    @ToString.Exclude
     private List<Chat> chats;
 
     @ManyToMany

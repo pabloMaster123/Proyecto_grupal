@@ -32,6 +32,7 @@ public class Ciudad implements Serializable {
     private String nombre;
 
     @OneToMany(mappedBy = "cuidad")
+    @ToString.Exclude
     private List<Usuario> usuaios;
 
 }

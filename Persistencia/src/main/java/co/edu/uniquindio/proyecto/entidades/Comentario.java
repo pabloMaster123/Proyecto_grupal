@@ -1,6 +1,8 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 import lombok.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import javax.persistence.ManyToOne;
@@ -27,10 +29,11 @@ public class Comentario implements Serializable {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Producto codigo_producto;
+    private Producto producto;
 
     @ManyToOne
     @JoinColumn(nullable = false)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Usuario codigo_usuario;
 
     @Column(nullable = false)

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.entidades.test;
 import co.edu.uniquindio.proyecto.entidades.Persona;
 import co.edu.uniquindio.proyecto.repositorios.PersonaRepo;
+import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class PersonaTest {
 
     @Autowired
     private PersonaRepo personaRepo;
+
 
     @Test
     @Sql("classpath:datos.sql")

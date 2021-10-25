@@ -43,7 +43,6 @@ insert into  comentario values ("1",1,"2025/09/30","mensaje1","respuesta1","1","
 insert into  comentario values ("2",2,"2025/01/30","mensaje2","respuesta2","2","1");
 insert into  comentario values ("3",3,"2025/09/23","mensaje3","respuesta3","3","1");
 
-
 insert into detalle_subasta values ("1","2025/09/18",40000,"1","1");
 insert into detalle_subasta values ("2","2025/09/11",10000,"2","1");
 insert into detalle_subasta values ("3","2025/09/01",22000,"3","1");
