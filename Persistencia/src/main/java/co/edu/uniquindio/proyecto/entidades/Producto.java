@@ -26,7 +26,6 @@ public class Producto implements Serializable {
     @Column(nullable = false,length = 30)
     private String nombre_producto;
 
-
     @Column(nullable = false)
     private Integer unidades_producto;
 
@@ -36,10 +35,8 @@ public class Producto implements Serializable {
     @Column(nullable = false)
     private Integer precio_producto;
 
-
     @Column(nullable = false)
     private LocalDate fecha_limite;
-
 
     @Column(nullable = false)
     private Integer descuento;

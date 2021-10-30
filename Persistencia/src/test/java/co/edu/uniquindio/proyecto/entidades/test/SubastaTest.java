@@ -1,5 +1,8 @@
 package co.edu.uniquindio.proyecto.entidades.test;
 
+        import co.edu.uniquindio.proyecto.dto.ProductoValido;
+        import co.edu.uniquindio.proyecto.entidades.Categoria;
+        import co.edu.uniquindio.proyecto.entidades.Chat;
         import co.edu.uniquindio.proyecto.entidades.Subasta;
         import co.edu.uniquindio.proyecto.repositorios.SubastaRepo;
         import org.junit.jupiter.api.Assertions;
@@ -8,6 +11,8 @@ package co.edu.uniquindio.proyecto.entidades.test;
         import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
         import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
         import org.springframework.test.context.jdbc.Sql;
+
+        import java.time.LocalDate;
         import java.util.List;
 
 
@@ -53,9 +58,25 @@ public class SubastaTest {
     @Test
     @Sql("classpath:datos.sql")
     public void buscarTest() {
-
         subastaRepo.findById("1").orElse(null);
         Assertions.assertEquals("1",  subastaRepo.findById("1").orElse(null).getCodigo());
     }
+
+    @Test
+    @Sql("classpath:datos.sql")
+    public void productoCategoriaTest(){
+        List<Categoria> categorias = subastaRepo.obtenerProductoCategoria("1");
+        categorias.forEach(System.out::println);
+        Assertions.assertEquals(1,categorias.size());
+    }
+
+    @Test
+    @Sql("classpath:datos.sql")
+    public void listarProductosValidos(){
+        List<Object[]> respuesta = subastaRepo.listaCategoriasValidas(LocalDate.now());
+        respuesta.forEach(objects -> System.out.println(objects[0]));
+        Assertions.assertEquals(1,respuesta.size());
+    }
+
 
 }

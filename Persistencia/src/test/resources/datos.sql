@@ -26,9 +26,9 @@ insert into mensaje values("1","2025/09/12","mesnaje1","1");
 insert into mensaje values("2","2025/09/12","mesnaje2","2");
 insert into mensaje values("3","2025/09/12","mesnaje3","1");
 
-insert into compra values("1","2025/09/12","1");
-insert into compra values("2","2025/01/12","1");
-insert into compra values("3","2025/09/18","1");
+insert into compra values("1","2025/09/12","1","Tarjeta Credito");
+insert into compra values("2","2025/01/12","1","Debito");
+insert into compra values("3","2025/09/18","1","Efectivo");
 
 
 insert into detalle_compra values ("1",15000,1,"1","1");
@@ -42,6 +42,7 @@ insert into subasta values ("3","2025/09/30","3");
 insert into  comentario values ("1",1,"2025/09/30","mensaje1","respuesta1","1","1");
 insert into  comentario values ("2",2,"2025/01/30","mensaje2","respuesta2","2","1");
 insert into  comentario values ("3",3,"2025/09/23","mensaje3","respuesta3","3","1");
+insert into  comentario values ("4",1,"2025/09/30","mensaje4","respuesta1","1","1");
 
 insert into detalle_subasta values ("1","2025/09/18",40000,"1","1");
 insert into detalle_subasta values ("2","2025/09/11",10000,"2","1");

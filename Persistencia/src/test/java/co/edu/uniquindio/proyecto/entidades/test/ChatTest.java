@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades.test;
 import co.edu.uniquindio.proyecto.entidades.Chat;
+import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.ChatRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -55,6 +56,7 @@ public class ChatTest {
         if (chatAux2 != null) { System.out.println("Si existe un chat con el codigo 97");}
         Assertions.assertNull(chatAux2);
     }
+
     @Test
     @Sql("classpath:datos.sql")
     public void buscarTest() {
@@ -62,4 +64,8 @@ public class ChatTest {
         chatRepo.findById("1").orElse(null);
         Assertions.assertEquals("1",  chatRepo.findById("1").orElse(null).getCodigo());
     }
+
+
+
+
 }

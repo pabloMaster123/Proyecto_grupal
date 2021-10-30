@@ -1,5 +1,7 @@
 package co.edu.uniquindio.proyecto.entidades.test;
+import co.edu.uniquindio.proyecto.entidades.Chat;
 import co.edu.uniquindio.proyecto.entidades.Persona;
+import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.PersonaRepo;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import org.junit.jupiter.api.Assertions;
@@ -96,6 +98,14 @@ public class PersonaTest {
 
         Page<Persona> lista = personaRepo.findAll(paginador);
         System.out.println(lista.stream().collect(Collectors.toList()));
+    }
+
+    @Test
+    @Sql("classpath:datos.sql")
+    public void listarUsuariosChatTest(){
+        List<Chat> chats = personaRepo.listarChats("1");
+        chats.forEach(System.out::println);
+        Assertions.assertEquals(3,chats.size());
     }
 
 }

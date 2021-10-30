@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.entidades.test;
 
 import co.edu.uniquindio.proyecto.entidades.Compra;
+import co.edu.uniquindio.proyecto.entidades.Persona;
 import co.edu.uniquindio.proyecto.repositorios.CompraRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -57,6 +58,13 @@ public class CompraTest {
     public void buscarTest() {
         Compra compraBuscar = compraRepo.findById("1").orElse(null);
         System.out.println(compraBuscar.getCodigo_usuario());
+    }
+
+    @Test
+    @Sql("classpath:datos.sql")
+    public void filtrarMedioPago(){
+        Long TotalMedioPago = compraRepo.filtrarMediosDePago("Efectivo");
+        System.out.println("El total de medios de pago es ---> " + TotalMedioPago);
     }
 
 }

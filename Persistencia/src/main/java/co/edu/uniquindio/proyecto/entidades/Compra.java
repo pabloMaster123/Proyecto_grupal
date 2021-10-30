@@ -34,6 +34,9 @@ public class Compra implements Serializable {
     private Usuario codigo_usuario;
 
     @Column(nullable = false)
+    private String medioPago;
+
+    @Column(nullable = false)
     private LocalDate fecha_compra;
 
     @OneToMany(mappedBy = "compra")

@@ -1,6 +1,8 @@
 package co.edu.uniquindio.proyecto.entidades.test;
+import co.edu.uniquindio.proyecto.dto.ProductoValido;
 import co.edu.uniquindio.proyecto.entidades.Persona;
 import co.edu.uniquindio.proyecto.entidades.Producto;
+import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.Assertions;
@@ -13,6 +15,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.jdbc.Sql;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,7 +68,6 @@ public class ProductoTest {
         Assertions.assertEquals("1",  productoRepo.findById("1").orElse(null).getCodigo());
     }
 
-
     @Test
     @Sql("classpath:datos.sql")
     public void paginadorProducto(){
@@ -79,7 +82,22 @@ public class ProductoTest {
     public void listarProductosYComentarios(){
         List<Object[]> respuesta = productoRepo.listaProductosYComentario();
         respuesta.forEach(objects -> System.out.println(objects[0] + " --- " + objects[1]));
-        Assertions.assertEquals(5,respuesta.size());
+        Assertions.assertEquals(6,respuesta.size());
+    }
+
+    @Test
+    @Sql("classpath:datos.sql")
+    public void listarUsuarioComentarioTest(){
+        List<Usuario> usuarios = productoRepo.listarUsariosComentarios("1");
+        usuarios.forEach(System.out::println);
+        Assertions.assertEquals(3,usuarios.size());
+    }
+
+    @Test
+    @Sql("classpath:datos.sql")
+    public void listarProductosValidos(){
+        List<ProductoValido> productos = productoRepo.listarProductosValidos(LocalDate.now());
+        productos.forEach(System.out::println);
     }
 
 }
