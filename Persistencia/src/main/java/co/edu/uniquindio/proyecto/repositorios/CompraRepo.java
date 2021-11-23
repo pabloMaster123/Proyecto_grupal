@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface CompraRepo extends JpaRepository<Compra,String>{
 
-    @Query("select distinct count(c) from Compra c where c.medioPago= :medioPago")
-    Long filtrarMediosDePago(String medioPago);
+    @Query("select distinct c.medioPago,count(c) from Compra c group by c.medioPago")
+    List<Object[]> filtrarMediosDePago();
 
 }

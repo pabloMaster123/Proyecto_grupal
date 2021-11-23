@@ -1,18 +1,19 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
+@AllArgsConstructor
 public class Persona implements Serializable {
 
      /*
@@ -28,10 +29,13 @@ public class Persona implements Serializable {
     @Column(nullable = false)
     private String nombre;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false,unique = true,length = 150)
+    @Length(max = 150)
     private String email;
 
     @Column(nullable = false)
-    private String password;
+    private String username;
 
+    @Column(nullable = false)
+    private String password;
 }

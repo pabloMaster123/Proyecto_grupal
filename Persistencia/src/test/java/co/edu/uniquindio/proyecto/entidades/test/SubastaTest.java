@@ -65,9 +65,8 @@ public class SubastaTest {
     @Test
     @Sql("classpath:datos.sql")
     public void productoCategoriaTest(){
-        List<Categoria> categorias = subastaRepo.obtenerProductoCategoria("1");
-        categorias.forEach(System.out::println);
-        Assertions.assertEquals(1,categorias.size());
+        List<Object[]> categorias = subastaRepo.obtenerProductoCategoria();
+        categorias.forEach(objects -> System.out.println(objects[0]+", "+objects[1]));
     }
 
     @Test

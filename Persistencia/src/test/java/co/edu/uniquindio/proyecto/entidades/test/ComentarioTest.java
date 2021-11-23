@@ -58,5 +58,14 @@ public class ComentarioTest {
         Comentario comentarioBuscar =comentarioRepo.findById("1").orElse(null);
         System.out.println(comentarioBuscar.getMensaje());
     }
+
+    @Test
+    @Sql("classpath:datos.sql")
+    public void productoCategoriaTest(){
+        List<Object[]> categorias = comentarioRepo.comentariosOrdenados();
+        categorias.forEach(objects -> System.out.println(objects[0]+", "+objects[1]));
+    }
+
 }
+
 

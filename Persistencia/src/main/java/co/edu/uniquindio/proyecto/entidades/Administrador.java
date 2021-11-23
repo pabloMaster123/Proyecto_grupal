@@ -14,7 +14,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Administrador extends Persona implements Serializable {
 
     /*

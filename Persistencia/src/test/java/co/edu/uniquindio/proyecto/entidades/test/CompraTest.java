@@ -63,8 +63,8 @@ public class CompraTest {
     @Test
     @Sql("classpath:datos.sql")
     public void filtrarMedioPago(){
-        Long TotalMedioPago = compraRepo.filtrarMediosDePago("Efectivo");
-        System.out.println("El total de medios de pago es ---> " + TotalMedioPago);
+        List<Object[]> TotalMedioPago = compraRepo.filtrarMediosDePago();
+        TotalMedioPago.forEach(objects -> System.out.println(objects[0]+", "+objects[1]));
     }
 
 }

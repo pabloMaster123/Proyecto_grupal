@@ -10,15 +10,9 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Usuario extends Persona implements Serializable {
 
-    @Id
-    @EqualsAndHashCode.Include
-    private String codigo;
-
     @ManyToOne
-    @JoinColumn(nullable = false)
     private Ciudad cuidad;
 
     @OneToMany(mappedBy = "codigo_usuario")
@@ -42,5 +36,12 @@ public class Usuario extends Persona implements Serializable {
 
     @ElementCollection
     private List<String> telefono;
+
+    @Builder
+    public Usuario(String codigo,String nombre,String email,String username,String pasword,Ciudad cuidad) {
+        super(codigo,nombre,email,username,pasword);
+        this.cuidad = cuidad;
+    }
+
 
 }

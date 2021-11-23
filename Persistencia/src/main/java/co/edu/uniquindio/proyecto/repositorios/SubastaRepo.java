@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface SubastaRepo extends JpaRepository<Subasta,String>{
 
-    @Query("select c from Subasta s left join s.producto.categorias c where s.codigo= :id")
-    List<Categoria> obtenerProductoCategoria(String id);
+    @Query("select  c.nombre,count(c) from Subasta s left join s.producto.categorias c group by c")
+    List<Object[]> obtenerProductoCategoria();
 
     @Query("select distinct c.nombre from Subasta s left join s.producto.categorias c where :fechaActual < s.fecha_limite")
     List<Object[]> listaCategoriasValidas(LocalDate fechaActual);
