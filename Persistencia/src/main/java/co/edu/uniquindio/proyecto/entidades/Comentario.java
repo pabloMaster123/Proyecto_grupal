@@ -25,7 +25,8 @@ public class Comentario implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
     @ManyToOne
     @JoinColumn(nullable = false)

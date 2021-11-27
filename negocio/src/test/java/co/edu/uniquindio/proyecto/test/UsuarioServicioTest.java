@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
 @SpringBootTest(classes = NegocioApplication.class)
 public class UsuarioServicioTest {
 
@@ -19,8 +18,8 @@ public class UsuarioServicioTest {
     private UsuarioServicio usuarioServicio;
 
     @Test
-    public void registarTest(){
-        Usuario u = new Usuario("1","sebastian","sebastian@gmail.com","usuario1","contrasenia",null);
+    public void registarTest() {
+        Usuario u = new Usuario("1", "sebastian", "sebastian@gmail.com", "usuario1", "contrasenia", null);
         try {
             Usuario respuesta = usuarioServicio.registrarUsuario(u);
             Assertions.assertNotNull(respuesta);
@@ -31,7 +30,7 @@ public class UsuarioServicioTest {
     }
 
     @Test
-    public void eliminarTest(){
+    public void eliminarTest() {
         try {
             usuarioServicio.eliminarUsuario("1");
             Assertions.assertTrue(true);
@@ -43,8 +42,8 @@ public class UsuarioServicioTest {
 
 
     @Test
-    public void listar(){
-        Usuario u = new Usuario("2","Pablo","pavlo@gmail.com","usuario2","fokakjd56",null);
+    public void listarTest() {
+        Usuario u = new Usuario("2", "Pablo", "pavlo@gmail.com", "usuario2", "fokakjd56", null);
         try {
             usuarioServicio.registrarUsuario(u);
             Assertions.assertNotNull(u);
@@ -57,7 +56,7 @@ public class UsuarioServicioTest {
     }
 
     @Test
-    public void actualizar(){
+    public void actualizarTest() {
 
         try {
             Usuario usuario = usuarioServicio.obtenerUsuario("1");
@@ -65,12 +64,22 @@ public class UsuarioServicioTest {
             usuarioServicio.actualizarUsuario(usuario);
 
             Usuario usuarioModificado = usuarioServicio.obtenerUsuario("1");
-            Assertions.assertEquals("rt61883",usuarioModificado.getPassword());
+            Assertions.assertEquals("rt61883", usuarioModificado.getPassword());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
 
+    @Test
+    public void LoginTest(){
+        try {
+            Usuario usuario = usuarioServicio.Login("usuario2", "fokakjd56");
+            Assertions.assertNotNull(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assertions.assertTrue(false, e.getMessage());
+        }
     }
 
 }

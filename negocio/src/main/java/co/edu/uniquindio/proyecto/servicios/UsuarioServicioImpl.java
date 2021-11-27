@@ -66,4 +66,16 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
         return  buscado.get();
     }
+
+    @Override
+    public Usuario Login(String email, String pasword) throws Exception {
+        return  usuarioRepo.findByEmailAndAndPassword(email,pasword).orElseThrow(() -> new Exception("Datos Incorrectos"));
+    }
+
+    @Override
+    public Usuario recuperarContraseña(String username, String pasword) throws Exception {
+        return null;
+    }
+
+
 }
