@@ -49,4 +49,12 @@ public class Comentario implements Serializable {
     @Column(nullable = true)
     private Integer calificacion;
 
+    public Comentario(Producto producto, Usuario codigo_usuario, String mensaje, String respuesta, LocalDate fecha_comentario, Integer calificacion) {
+        this.producto = producto;
+        this.codigo_usuario = codigo_usuario;
+        this.mensaje = mensaje;
+        this.respuesta = respuesta;
+        this.fecha_comentario = fecha_comentario;
+        this.calificacion = calificacion;
+    }
 }

@@ -1,4 +1,5 @@
 package co.edu.uniquindio.proyecto.repositorios;
+import co.edu.uniquindio.proyecto.entidades.Categoria;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import org.springframework.data.domain.Page;
@@ -27,6 +28,12 @@ public interface ProductoRepo extends JpaRepository<Producto,String>{
 
     @Query("select distinct c.codigo_usuario from Producto p join  p.comentarios c where p.codigo= :id")
     List<Usuario> listarUsariosComentarios(String id);
+
+    @Query("select p from Producto p where p.nombre_producto = :nombreProducto")
+    Optional<Producto> findByNombreProducto(String nombreProducto);
+
+    @Query("select cp.productos from Producto p, p.categorias cp where cp.codigo = :codigoCategoria")
+    List<Producto> listarProductoPorCategoria(String codigoCategoria);
 
 //    @Query("select new co.edu.uniquindio.proyecto.dto.ProductoValido(p.nombre_producto,p.descripsion_producto,p.precio_producto,p.cuidad) from Producto p where  :fechaActual < p.fecha_limite")
 //    List<ProductoValido> listarProductosValidos(LocalDate fechaActual);

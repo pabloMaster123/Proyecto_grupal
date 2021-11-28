@@ -16,7 +16,7 @@ public interface ProductoServicio {
 
     List<Producto> listarProductos();
 
-    List<Object[]> listaProductosCategoria();
+    List<Producto> listaProductosCategoria();
 
     void ComentarProducto(String mensaje, Integer calificacion, Usuario usuario, Producto producto) throws Exception;
 

@@ -1,10 +1,11 @@
 package co.edu.uniquindio.proyecto.servicios;
 
-import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,13 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         if (buscado.isPresent()){
             throw new Exception("El email del usuario ya existe");
         }
+        u.setComentarios(new ArrayList<Comentario>());
+        u.setCompras(new ArrayList<Compra>());
+        u.setChats(new ArrayList<Chat>());
+        u.setProductosCarrito(new ArrayList<Producto>());
+        u.setProductos(new ArrayList<Producto>());
+        u.setProductosFavoritos(new ArrayList<Producto>());
+        u.setTelefono(new ArrayList<String>());
 
         return usuarioRepo.save(u);
     }
