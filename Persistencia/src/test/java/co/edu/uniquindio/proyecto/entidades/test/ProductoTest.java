@@ -82,7 +82,7 @@ public class ProductoTest {
     public void listarProductosYComentarios(){
         List<Object[]> respuesta = productoRepo.listaProductosYComentario();
         respuesta.forEach(objects -> System.out.println(objects[0] + " --- " + objects[1]));
-        Assertions.assertEquals(6,respuesta.size());
+        Assertions.assertEquals(4,respuesta.size());
     }
 
     @Test
@@ -90,14 +90,14 @@ public class ProductoTest {
     public void listarUsuarioComentarioTest(){
         List<Usuario> usuarios = productoRepo.listarUsariosComentarios("1");
         usuarios.forEach(System.out::println);
-        Assertions.assertEquals(3,usuarios.size());
+        Assertions.assertEquals(2,usuarios.size());
     }
 
-    @Test
-    @Sql("classpath:datos.sql")
-    public void listarProductosValidos(){
-        List<ProductoValido> productos = productoRepo.listarProductosValidos(LocalDate.now());
-        productos.forEach(System.out::println);
-    }
+//    @Test
+//    @Sql("classpath:datos.sql")
+//    public void listarProductosValidos(){
+//        List<ProductoValido> productos = productoRepo.listarProductosValidos(LocalDate.now());
+//        productos.forEach(System.out::println);
+//    }
 
 }

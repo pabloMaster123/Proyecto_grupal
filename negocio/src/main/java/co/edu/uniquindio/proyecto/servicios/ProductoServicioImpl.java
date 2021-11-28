@@ -18,6 +18,9 @@ public class ProductoServicioImpl implements ProductoServicio{
     @Autowired
     private ProductoRepo productoRepo;
 
+    @Autowired
+    private UsuarioRepo usuarioRepo;
+
     @Override
     public Producto publicarProducto(Producto p) throws Exception {
         Optional<Producto> buscado = productoRepo.findById(p.getCodigo());
@@ -55,11 +58,17 @@ public class ProductoServicioImpl implements ProductoServicio{
             throw new Exception("El codigo del producto no existe");
         }
 
-        return  buscado.get();    }
+        return  buscado.get();
+    }
 
     @Override
-    public List<Producto> listaProductos(Categoria categoria) {
+    public List<Producto> listarProductos() {
         return productoRepo.findAll();
+    }
+
+    @Override
+    public List<Object[]> listaProductosCategoria() {
+       return null ;
     }
 
     @Override
@@ -77,18 +86,22 @@ public class ProductoServicioImpl implements ProductoServicio{
 
     }
 
-    @Override
-    public void comparProducto(Compra compra) throws Exception {
-
-    }
 
     @Override
-    public List<Producto> BuscarProductos(String nombreProducto, String[] filtros) {
+    public List<Producto> BuscarProductos(String nombreProducto, String[] filtros) throws Exception {
+
+        Optional<Producto> buscado = productoRepo.findByNombre_producto(nombreProducto);
+
+        if (buscado.isEmpty()){
+            throw new Exception("El codigo del producto no existe");
+        }
+
         return null;
     }
 
     @Override
-    public List<Producto> listarProductos(String CodigoUsuario) throws Exception {
-        return null;
+    public List<Object[]> listarProductosUsuario() throws Exception {
+        return productoRepo.productosUsuario();
     }
+
 }

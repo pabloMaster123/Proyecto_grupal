@@ -13,4 +13,8 @@ public interface CompraRepo extends JpaRepository<Compra,String>{
     @Query("select distinct c.medioPago,count(c) from Compra c group by c.medioPago")
     List<Object[]> filtrarMediosDePago();
 
+    @Query("select distinct c.codigo_usuario,count(c) from Compra c group by c.codigo_usuario")
+    List<Object[]> filtrarUsuarios();
+
+
 }

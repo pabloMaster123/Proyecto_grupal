@@ -73,9 +73,14 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     }
 
     @Override
-    public Usuario recuperarContraseña(String username, String pasword) throws Exception {
-        return null;
-    }
+    public Usuario recuperarContraseña(Usuario u) throws Exception {
+        Optional<Usuario> buscado = usuarioRepo.findByEmail(u.getEmail());
 
+        if (buscado.isPresent()){
+            throw new Exception("El correo del usuario no existe");
+        }
+
+        return  usuarioRepo.save(u);
+    }
 
 }

@@ -7,7 +7,7 @@ insert into ciudad values("2","pereira");
 insert into ciudad values("3","arauca");
 
 insert into usuario values ("1","sebastian@gmail.com","sebastian","contrasenia","usuario1","1");
-insert into usuario values ("2","pavlo@gmail.com","pavlo","fokakjd56","usuario2","2");
+insert into usuario values ("4","pablo@gmail.com","pavlo","fokakjd56","usuario2","2");
 insert into usuario values ("3","valeria@gmail.com","valeria","fgh1234","usuario3","3");
 
 insert into administrador values ("123","santiago@gmail.com","santiago","i2k3n24","admi1");

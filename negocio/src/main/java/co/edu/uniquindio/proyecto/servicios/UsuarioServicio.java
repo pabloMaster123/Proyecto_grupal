@@ -18,6 +18,6 @@ public interface UsuarioServicio {
 
     Usuario Login(String email, String pasword) throws Exception;
 
-    Usuario recuperarContraseña(String username,String pasword) throws Exception;
+    Usuario recuperarContraseña(Usuario u) throws Exception;
 
 }

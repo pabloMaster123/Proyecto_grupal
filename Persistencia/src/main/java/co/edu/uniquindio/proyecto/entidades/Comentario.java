@@ -46,7 +46,7 @@ public class Comentario implements Serializable {
     @Column(nullable = false)
     private LocalDate fecha_comentario;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Integer calificacion;
 
 }

@@ -23,7 +23,6 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
 
     Page<Usuario> findAll(Pageable paginador);
 
-
     @Query("select c from Usuario u INNER join u.chats c where u.codigo= :id")
     List<Chat> listarChats(String id);
 }

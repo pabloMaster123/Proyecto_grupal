@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @SpringBootTest(classes = NegocioApplication.class)
+@Transactional
 public class UsuarioServicioTest {
 
     @Autowired
@@ -32,7 +33,7 @@ public class UsuarioServicioTest {
     @Test
     public void eliminarTest() {
         try {
-            usuarioServicio.eliminarUsuario("1");
+            usuarioServicio.eliminarUsuario("2");
             Assertions.assertTrue(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,10 +41,19 @@ public class UsuarioServicioTest {
         }
     }
 
+    @Test
+    public void obtenerUsuario(){
+        try {
+            Usuario usuarioBuscado = usuarioServicio.obtenerUsuario("2");
+            Assertions.assertNotNull(usuarioBuscado);
+        } catch (Exception e) {
+            Assertions.assertTrue(false,e.getMessage());
+        }
+    }
 
     @Test
     public void listarTest() {
-        Usuario u = new Usuario("2", "Pablo", "pavlo@gmail.com", "usuario2", "fokakjd56", null);
+        Usuario u = new Usuario("3", "Pablo", "pallo@gmail.com", "usuario2", "fokakjd56", null);
         try {
             usuarioServicio.registrarUsuario(u);
             Assertions.assertNotNull(u);

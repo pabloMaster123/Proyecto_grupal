@@ -20,6 +20,4 @@ public class ProductoValido {
 
     private Ciudad ciudad;
 
-
-
 }
