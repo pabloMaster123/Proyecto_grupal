@@ -24,7 +24,7 @@ public interface ProductoServicio {
 
     void eliminarProductoFavorito(Producto producto, Usuario usuario) throws Exception;
 
-    List<Producto> BuscarProductos(String nombreProducto, String [] filtros) throws Exception;
+    List<Producto> BuscarProductos(String nombreProducto, Object [] filtros) throws Exception;
 
     List<Object[]> listarProductosUsuario() throws Exception;
 }

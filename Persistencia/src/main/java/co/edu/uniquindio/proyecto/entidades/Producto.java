@@ -62,7 +62,7 @@ public class Producto implements Serializable {
 
     @JoinColumn(nullable = false)
     @ManyToOne
-    private Ciudad cuidad;
+    private Ciudad ciudad;
 
     @JoinColumn(nullable = false)
     @ManyToOne

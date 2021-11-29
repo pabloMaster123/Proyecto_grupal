@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.*;
+import co.edu.uniquindio.proyecto.repositorios.CategoriaRepo;
 import co.edu.uniquindio.proyecto.repositorios.ComentarioRepo;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
@@ -22,6 +23,9 @@ public class ProductoServicioImpl implements ProductoServicio{
 
     @Autowired
     private ComentarioRepo comentarioRepo;
+
+    @Autowired
+    private CategoriaRepo categoriaRepo;
 
     @Override
     public Producto publicarProducto(Producto p) throws Exception {
@@ -124,9 +128,14 @@ public class ProductoServicioImpl implements ProductoServicio{
 
 
     @Override
-    public List<Producto> BuscarProductos(String nombreProducto, String[] filtros) throws Exception {
+        public List<Producto> BuscarProductos(String nombreProducto, Object[] filtros) throws Exception {
 
-        Optional<Producto> buscado = productoRepo.findByNombreProducto(nombreProducto);
+            Categoria categoria = (Categoria) filtros[0];
+            Double precio = (Double) filtros[1];
+            Ciudad ciudad = (Ciudad) filtros[2];
+            Integer calificacion = (Integer) filtros[3];
+
+        Optional<Producto> buscado = productoRepo.findByNombreProducto(nombreProducto, categoria, precio, ciudad, calificacion);
 
         if (buscado.isEmpty()){
             throw new Exception("El codigo del producto no existe");
