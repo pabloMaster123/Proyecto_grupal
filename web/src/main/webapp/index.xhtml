@@ -13,8 +13,36 @@
     <title>Mi pagina web</title>
 </head>
 <h:body>
-    <h1>#{inicioBean.mensaje}</h1>
-    <h2>Esta pagina es de despedida</h2>
-    <h3>Programacion Avanzada</h3>
+
+    <div id="header">
+        <nav class="py-2 bg-light border-bottom">
+            <div class="container d-flex flex-wrap">
+                <ul class="nav me-auto">
+                    <li class="nav-item"><a href="index.xhtml" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a href="registrar_producto.xhtml" class="nav-link link-dark px-2">Crear Producto</a></li>
+                </ul>
+                <ul class="nav">
+                    <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Login</a></li>
+                    <li class="nav-item"><a href="registrar_usuario.xhtml" class="nav-link link-dark px-2">Registrar Usuario</a></li>
+                </ul>
+            </div>
+        </nav>
+        <header class="py-3 mb-4 border-bottom">
+            <div class="container d-flex flex-wrap justify-content-center">
+                <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                    <span class="pi pi-shopping-cart" style="front-size:2rem;margin-right: 5px"></span>
+                    <span class="fs-4">UniShop</span>
+                </a>
+
+                <h:form class="col-12 col-lg-auto mb-3 mb-lg-0">
+                    <p:inputText placeholder="Que producto desea Buscar?" required="true"/>
+                    <p:commandButton icon="pi pi-search" />
+                </h:form>
+            </div>
+
+        </header>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </h:body>
 </html>

@@ -34,6 +34,12 @@ public class Usuario extends Persona implements Serializable {
     @ManyToMany
     private List<Producto> productos;
 
+    @ManyToMany
+    private List<Producto> productosFavoritos;
+
+    @ManyToMany
+    private List<Producto> productosCarrito;
+
     @ElementCollection
     private List<String> telefono;
 

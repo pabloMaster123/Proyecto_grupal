@@ -1,7 +1,9 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.Comentario;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ComentarioServicioImpl implements ComentarioServicio{
     
     @Override

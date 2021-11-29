@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
+import java.util.Map;
 
 @Entity
 @Getter
