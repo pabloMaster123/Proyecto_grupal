@@ -60,7 +60,7 @@ public class Producto implements Serializable {
     @ManyToMany(mappedBy = "productos")
     private List<Usuario> usuarios;
 
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = true)
     @ManyToOne
     private Ciudad ciudad;
 

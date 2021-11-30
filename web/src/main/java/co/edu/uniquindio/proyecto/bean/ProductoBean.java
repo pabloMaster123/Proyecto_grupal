@@ -6,6 +6,8 @@ import co.edu.uniquindio.proyecto.servicios.ProductoServicio;
 import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
 import lombok.Getter;
 import lombok.Setter;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -37,7 +39,7 @@ public class ProductoBean implements Serializable {
 
     public String registarProducto(){
         try {
-            Usuario usuario = usuarioServicio.obtenerUsuario("2");
+            Usuario usuario = usuarioServicio.obtenerUsuario("313");
             producto.setUsuario(usuario);
             productoServicio.publicarProducto(producto);
             return "ProductoCreado?faces-redirect=true";
@@ -47,6 +49,10 @@ public class ProductoBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, msg1);
         }
         return null;
+    }
+
+    public void subirImagenes(FileUploadEvent event){
+        UploadedFile imagen = event.getFile();
     }
 
 }

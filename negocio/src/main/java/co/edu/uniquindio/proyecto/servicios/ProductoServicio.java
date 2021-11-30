@@ -18,6 +18,8 @@ public interface ProductoServicio {
 
     List<Producto> listaProductosCategoria();
 
+    List<Producto> listarProductoNombre(String nombre);
+
     void ComentarProducto(String mensaje, Integer calificacion, Usuario usuario, Producto producto) throws Exception;
 
     void guardarProductoFavorito(Producto producto, Usuario usuario) throws Exception;

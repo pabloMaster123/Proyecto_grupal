@@ -33,7 +33,7 @@ public class BuscarBean {
     public void inicializar(){
         if (busquedaParametro != null && !busquedaParametro.isEmpty()){
             try {
-                productos = productoServicio.BuscarProductos(busquedaParametro, null);
+                productos = productoServicio.listarProductoNombre(busquedaParametro);
             } catch (Exception e) {
                 e.printStackTrace();
             }

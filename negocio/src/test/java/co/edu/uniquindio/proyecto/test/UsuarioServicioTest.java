@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @SpringBootTest(classes = NegocioApplication.class)
-@Transactional
 public class UsuarioServicioTest {
 
     @Autowired

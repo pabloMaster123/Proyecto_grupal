@@ -30,6 +30,7 @@ public class ProductoServicioImpl implements ProductoServicio{
     @Override
     public Producto publicarProducto(Producto p) throws Exception {
         Optional<Producto> buscado = productoRepo.findById(p.getCodigo());
+
         if (buscado.isPresent()){
             throw new Exception("El codigo del producto ya existe");
         }
@@ -75,6 +76,11 @@ public class ProductoServicioImpl implements ProductoServicio{
     @Override
     public List<Producto> listaProductosCategoria() {
        return null ;
+    }
+
+    @Override
+    public List<Producto> listarProductoNombre(String nombre) {
+        return productoRepo.listarProductoNombre(nombre);
     }
 
     @Override

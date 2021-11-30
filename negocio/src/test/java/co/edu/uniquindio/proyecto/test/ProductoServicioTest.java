@@ -16,7 +16,6 @@ import java.util.List;
 
 
 @SpringBootTest(classes = NegocioApplication.class)
-@Transactional
 public class ProductoServicioTest {
 
     @Autowired
