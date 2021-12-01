@@ -25,7 +25,7 @@ public class Producto implements Serializable {
     private String codigo;
 
     @Column(nullable = false,length = 30)
-    private String nombre_producto;
+    private String nombre_producto; //usted en e inex está llamando la propiedad nombre, pero acá se llama es nombre_producto. Ojo con eso.
 
     @Positive
     @Column(nullable = false)
@@ -54,7 +54,7 @@ public class Producto implements Serializable {
     private List<Subasta> subastas;
 
     @ToString.Exclude
-    @ManyToMany(mappedBy = "productos")
+    @ElementCollection
     private List<Categoria> categorias;
 
     @ManyToMany(mappedBy = "productos")
@@ -68,7 +68,7 @@ public class Producto implements Serializable {
     @ManyToOne
     private Usuario usuario;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> ruta;
 
     public Producto(String codigo, String nombre_producto, Integer unidades_producto, String descripsion_producto, Double precio_producto, LocalDateTime fecha_limite, Integer descuento, Usuario usuario) {
@@ -81,5 +81,18 @@ public class Producto implements Serializable {
         this.descuento = descuento;
         this.usuario = usuario;
     }
+
+    /**
+     * Es importante la palabra get al inicio, por eso sale error en el index.
+     * @return
+     */
+    public String getImagenPrincipal(){
+        if(ruta!= null && !ruta.isEmpty()){
+            return ruta.get(0);
+        }
+        return "default.png";
+    }
+
+
 }
 

@@ -1,6 +1,5 @@
 package co.edu.uniquindio.proyecto.repositorios;
 import co.edu.uniquindio.proyecto.entidades.Categoria;
-import co.edu.uniquindio.proyecto.entidades.Ciudad;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import org.springframework.data.domain.Page;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface ProductoRepo extends JpaRepository<Producto,String>{
@@ -32,6 +30,9 @@ public interface ProductoRepo extends JpaRepository<Producto,String>{
 
     @Query("select p from Producto p where p.nombre_producto like concat('%' , :nombre, '%') ")
     List<Producto> listarProductoNombre(String nombre);
+
+    @Query("select p from Producto p where :categoria member of p.categorias")
+    List<Producto> listarProductoCategoria(Categoria categoria);
 
 //    @Query("select p from Producto p, p.categorias cp where p.nombre_producto = :nombreProducto and cp = :categoria")
 //    Optional<Producto> findByNombreProductoConCategoria(String nombreProducto, Categoria categoria);

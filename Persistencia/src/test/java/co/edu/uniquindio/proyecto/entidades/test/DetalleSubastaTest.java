@@ -1,6 +1,5 @@
 package co.edu.uniquindio.proyecto.entidades.test;
 
-import co.edu.uniquindio.proyecto.entidades.Categoria;
 import co.edu.uniquindio.proyecto.entidades.DetalleSubasta;
 import co.edu.uniquindio.proyecto.repositorios.DetalleSubastaRepo;
 import org.junit.jupiter.api.Assertions;

@@ -13,7 +13,7 @@ public interface ComentarioRepo  extends JpaRepository<Comentario,String>{
     @Query("select c from Comentario c where c.calificacion between :calificacionMenor and :calificacionMayor")
     List<Comentario> listaComentarioRango(int calificacionMenor, int calificacionMayor);
 
-    @Query("select ca.nombre,avg(c.calificacion) from Comentario c left join c.producto.categorias ca group by  ca order by c.calificacion desc ")
+    @Query("select c.producto.nombre_producto,avg(c.calificacion) from Comentario c left join c.producto.categorias ca group by  ca order by c.calificacion desc ")
     List<Object[]> comentariosOrdenados();
 
 }

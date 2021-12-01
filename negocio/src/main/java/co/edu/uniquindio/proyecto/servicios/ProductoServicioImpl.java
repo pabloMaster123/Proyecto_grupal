@@ -1,7 +1,6 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.*;
-import co.edu.uniquindio.proyecto.repositorios.CategoriaRepo;
 import co.edu.uniquindio.proyecto.repositorios.ComentarioRepo;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
@@ -9,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +24,7 @@ public class ProductoServicioImpl implements ProductoServicio{
     @Autowired
     private ComentarioRepo comentarioRepo;
 
-    @Autowired
-    private CategoriaRepo categoriaRepo;
+
 
     @Override
     public Producto publicarProducto(Producto p) throws Exception {
@@ -74,8 +73,8 @@ public class ProductoServicioImpl implements ProductoServicio{
     }
 
     @Override
-    public List<Producto> listaProductosCategoria() {
-       return null ;
+    public List<Producto> listaProductosCategoria(Categoria categoria) {
+       return productoRepo.listarProductoCategoria(categoria) ;
     }
 
     @Override
@@ -104,6 +103,12 @@ public class ProductoServicioImpl implements ProductoServicio{
         comentarioRepo.save(comentario);
 
         productoRepo.save(aux);
+    }
+
+    @Override
+    public void Comentar(Comentario comentario) throws Exception {
+        comentario.setFecha_comentario(LocalDate.now());
+        comentarioRepo.save(comentario);
     }
 
     @Override
@@ -153,6 +158,16 @@ public class ProductoServicioImpl implements ProductoServicio{
     @Override
     public List<Object[]> listarProductosUsuario() throws Exception {
         return productoRepo.productosUsuario();
+    }
+
+    @Override
+    public List<Categoria> listarCategorias() {
+        return Arrays.asList(Categoria.values());
+    }
+
+    @Override
+    public Categoria obtenerCategoria(String categoria) throws Exception {
+        return Categoria.valueOf(categoria);
     }
 
 }

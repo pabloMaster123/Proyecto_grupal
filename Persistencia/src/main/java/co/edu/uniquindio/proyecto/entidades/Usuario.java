@@ -13,7 +13,7 @@ import java.util.List;
 public class Usuario extends Persona implements Serializable {
 
     @ManyToOne
-    private Ciudad cuidad;
+    private Ciudad cuidad; //OJO con los nombres de las variables, debe usar las variables como se llaman en SU proyecto. NO en el mío.
 
     @OneToMany(mappedBy = "codigo_usuario")
     @ToString.Exclude

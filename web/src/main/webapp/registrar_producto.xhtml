@@ -32,15 +32,28 @@
                     <p:outputLabel value="Precio" for="precio_p"/>
                     <p:inputText id="precio_p" value="#{productoBean.producto.precio_producto}" required="true"/>
 
+                    <p:outputLabel value="Categorias" for="categorias_p" />
+                    <p:selectManyMenu id="categorias_p" value="#{productoBean.producto.categorias}" showCheckbox="true" required="true">
+                        <f:selectItems value="#{productoBean.categorias}" var="categoria" />
+                    </p:selectManyMenu>
+
+                    <p:outputLabel value="Ciudad" for="ciudad_p"/>
+                    <p:selectOneMenu id="ciudad_p" value="#{productoBean.producto.ciudad}" converter="#{ciudadConverter}">
+                        <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true"/>
+                        <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
+                                       value="#{productoBean.ciudaes}"/>
+                    </p:selectOneMenu>
+
                     <p:outputLabel value="Fecha limite" for="fecha_p"/>
                     <p:datePicker id="fecha_p" value="#{productoBean.producto.fecha_limite}" required="true"/>
 
                     <p:outputLabel value="Descuento" for="descuento_p"/>
                     <p:inputText id="descuento_p" value="#{productoBean.producto.descuento}" required="true"/>
 
-                    <p:outputLabel value="Imagenes" for="imagen_p"/>
-                    <p:fileUpload for="imagen_p" listener="#{productoBean.subirImagenes}" mode="advance" multiple="true" sizeLimit="1000000"
-                                  fileLimit="5" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true"/>
+                    <p:outputLabel for="imagenes_producto" value="Imágenes: "/>
+                    <p:fileUpload id="imagenes_producto" listener="#{productoBean.subirImagenes}" mode="advanced"
+                                  multiple="true" sizeLimit="6000000" fileLimit="5"
+                                  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true"/>
 
                     <p:outputLabel value="Descripsion" for="descripsion_p"/>
                     <p:textEditor id="descripsion_p" value="#{productoBean.producto.descripsion_producto}" height="300"

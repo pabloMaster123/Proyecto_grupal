@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyecto.servicios;
 import co.edu.uniquindio.proyecto.entidades.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductoServicio {
 
@@ -16,11 +17,13 @@ public interface ProductoServicio {
 
     List<Producto> listarProductos();
 
-    List<Producto> listaProductosCategoria();
+    List<Producto> listaProductosCategoria(Categoria categoria);
 
     List<Producto> listarProductoNombre(String nombre);
 
     void ComentarProducto(String mensaje, Integer calificacion, Usuario usuario, Producto producto) throws Exception;
+
+    void Comentar(Comentario comentario) throws Exception;
 
     void guardarProductoFavorito(Producto producto, Usuario usuario) throws Exception;
 
@@ -29,4 +32,8 @@ public interface ProductoServicio {
     List<Producto> BuscarProductos(String nombreProducto, Object [] filtros) throws Exception;
 
     List<Object[]> listarProductosUsuario() throws Exception;
+
+    List<Categoria> listarCategorias();
+
+    Categoria obtenerCategoria(String codigo) throws Exception;
 }

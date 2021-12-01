@@ -1,8 +1,5 @@
 package co.edu.uniquindio.proyecto.entidades.test;
 
-        import co.edu.uniquindio.proyecto.dto.ProductoValido;
-        import co.edu.uniquindio.proyecto.entidades.Categoria;
-        import co.edu.uniquindio.proyecto.entidades.Chat;
         import co.edu.uniquindio.proyecto.entidades.Subasta;
         import co.edu.uniquindio.proyecto.repositorios.SubastaRepo;
         import org.junit.jupiter.api.Assertions;
@@ -74,7 +71,7 @@ public class SubastaTest {
     public void listarProductosValidos(){
         List<Object[]> respuesta = subastaRepo.listaCategoriasValidas(LocalDate.now());
         respuesta.forEach(objects -> System.out.println(objects[0]));
-        Assertions.assertEquals(1,respuesta.size());
+        Assertions.assertEquals(3,respuesta.size());
     }
 
 
