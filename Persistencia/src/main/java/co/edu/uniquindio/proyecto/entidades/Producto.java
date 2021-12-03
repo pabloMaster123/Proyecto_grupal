@@ -8,7 +8,6 @@ import javax.persistence.ManyToMany;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -60,7 +59,7 @@ public class Producto implements Serializable {
     @ManyToMany(mappedBy = "productos")
     private List<Usuario> usuarios;
 
-    @JoinColumn(nullable = true)
+    @JoinColumn(nullable = false)
     @ManyToOne
     private Ciudad ciudad;
 

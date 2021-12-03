@@ -13,7 +13,6 @@ import lombok.Setter;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -22,8 +21,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Component
 @ViewScoped
@@ -33,14 +31,17 @@ public class ProductoBean implements Serializable {
     @Setter
     private Producto producto;
 
-    @Autowired
-    private UsuarioServicio usuarioServicio;
+    private final UsuarioServicio usuarioServicio;
 
-    @Autowired
-    private CiudadServicio ciudadServicio;
+    private final CiudadServicio ciudadServicio;
 
-    @Autowired
-    private ProductoServicio productoServicio;
+    private final ProductoServicio productoServicio;
+
+    public ProductoBean(CiudadServicio ciudadServicio,UsuarioServicio usuarioServicio,ProductoServicio productoServicio) {
+        this.ciudadServicio   = ciudadServicio;
+        this.usuarioServicio  = usuarioServicio;
+        this.productoServicio = productoServicio;
+    }
 
     private ArrayList<String> imagenes;
 
@@ -94,7 +95,7 @@ public class ProductoBean implements Serializable {
 
         try {
             File archivo = new File(urlUpload + "/" + imagen.getFileName());
-            OutputStream outputStream = null;
+            OutputStream outputStream;
             outputStream = new FileOutputStream(archivo);
             IOUtils.copy(imagen.getInputStream(), outputStream);
             return imagen.getFileName();
