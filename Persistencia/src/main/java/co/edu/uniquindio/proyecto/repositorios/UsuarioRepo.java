@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto.repositorios;
 
 import co.edu.uniquindio.proyecto.entidades.Chat;
 import co.edu.uniquindio.proyecto.entidades.Persona;
+import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,8 +22,14 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
 
     Optional<Usuario> findByEmailAndAndPassword(String email, String password);
 
+    Optional<Usuario> findByNombre(String nombre);
+
     Page<Usuario> findAll(Pageable paginador);
 
     @Query("select c from Usuario u INNER join u.chats c where u.codigo= :id")
     List<Chat> listarChats(String id);
+
+    @Query("select u from Usuario u where u.nombre like concat('%' , :nombre, '%') ")
+    List<Usuario> listarUsuarioNombre(String nombre);
+
 }

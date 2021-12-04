@@ -13,10 +13,11 @@
     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     <h:outputStylesheet library="css" name="styles.css"/>
     <h:outputScript library="js" name="bootstrap.bundle.min.js"/>
-    <title>Crear nuevo usuario</title>
+    <title>Administrador</title>
 </h:head>
 <h:body>
-
+    <div id="cajon"></div>
+    <div></div>
     <div id="header">
         <header>
             <div class="px-3 py-2 bg-dark text-white">
@@ -25,7 +26,7 @@
                         <a href="/"
                            class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
                         </a>
-                        <span class="pi pi-shopping-cart" style="front-size:2rem;margin-right: 20px"></span>
+                        <span class="pi pi-shopping-cart" style="front-size:2rem;margin-right: 5px"></span>
                         <span class="fs-4">Unishop</span>
                         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                             <li>
@@ -41,27 +42,21 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="registrarSubasta.xhtml" class="nav-link text-white">
+                                <a href="#" class="nav-link text-white">
                                     <i class="pi pi-save bi d-block mx-auto mb-1 icon-menu"></i>
-                                    Crear Subasata
+                                    Crear usuario
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link text-white">
                                     <i class="pi pi-star bi d-block mx-auto mb-1 icon-menu"></i>
-                                    Compras
+                                    Products
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link text-white">
                                     <i class="pi pi-star bi d-block mx-auto mb-1 icon-menu"></i>
-                                    Productos
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link text-white">
-                                    <i class="pi pi-star bi d-block mx-auto mb-1 icon-menu"></i>
-                                    Chat
+                                    Customers
                                 </a>
                             </li>
                         </ul>
@@ -73,9 +68,9 @@
 
                     <div class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto">
                         <h:form>
-                            <p:inputText style="width: 300px" placeholder="Que producto desea Buscar?" required="true"
-                                         value="#{buscarProductoBean.busqueda}"/>
-                            <p:commandButton icon="pi pi-search" action="#{buscarProductoBean.buscar}" update="@form"/>
+                            <p:inputText style="width: 300px" placeholder="Que usuario desea Buscar?" required="true"
+                                         value="#{buscarUsuariosBean.busqueda}"/>
+                            <p:commandButton icon="pi pi-search" action="#{buscarUsuariosBean.buscar}" update="@form"/>
                         </h:form>
 
                     </div>
@@ -94,45 +89,56 @@
 
     </div>
 
-    <p:panel header="Registra usuario">
-        <h:form>
-            <h:panelGrid columns="3" cellpadding="5">
+    <div id="content">
+        <div class="container">
+            <h1>Lista de usuarios</h1>
+            <h:form>
+                <p:dataView value="#{administradorBean.usuarios}" var="usuario" gridIcon="pi pi-th-large"
+                            listIcon="pipi-bars">
+                    <p:dataViewGridItem>
+                        <div class="card">
 
-                <p:outputLabel value="Codigo" for="codigo_u"/>
-                <p:inputText id="codigo_u" value="#{usuarioBean.usuario.codigo}" required="true"/>
-                <p:message for="codigo_u"/>
+                            <div class="card-body">
+                                <h5 class="card-title">#{usuario.nombre}</h5>
+                                <p class="card-text">#{usuario.username}</p>
+                                <hr/>
+                                <p:commandButton value="Ver detalle" styleClass="ui-button-raised"
+                                                 icon="pi pi-arrow-right" iconPos="right"
+                                                 action="#{administradorBean.irADetalle(usuario.codigo)}"/>
 
-                <p:outputLabel value="Nombre" for="nombre_u"/>
-                <p:inputText id="nombre_u" value="#{usuarioBean.usuario.nombre}" required="true"/>
-                <p:message for="nombre_u"/>
+                            </div>
+                        </div>
+                    </p:dataViewGridItem>
 
-                <p:outputLabel value="Email" for="email_u"/>
-                <p:inputText id="email_u" value="#{usuarioBean.usuario.email}" required="true"/>
-                <p:message for="email_u"/>
+                    <p:dataViewListItem>
+                        <div class="row d-flex item-pro">
 
-                <p:outputLabel value="Usuername" for="username_u"/>
-                <p:inputText id="username_u" value="#{usuarioBean.usuario.username}" required="true"/>
-                <p:message for="username_u"/>
+                            <div class="col-lg-8 col-md-1 align-self-center">
+                                <p:outputPanel>
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <h:outputText value="Nombre:"/>
+                                        <h:outputText value="#{usuario.nombre}" style="font-weight:bold"/>
+                                        <h:outputText value="Nombre usuario:"/>
+                                        <h:outputText value="#{usuario.username}"/>
+                                        <h:outputText value="Ciudad:"/>
+                                        <h:outputText value="#{usuario.cuidad.nombre}"/>
+                                    </h:panelGrid>
+                                </p:outputPanel>
+                            </div>
+                            <div class="col-lg-2 col-md-1 align-self-center">
+                                <p:commandButton value="Ver detalle" styleClass="ui-button-raised"
+                                                 icon="pi pi-arrow-right" iconPos="right"
+                                                 action="#{administradorBean.irADetalle(usuario.codigo)}"/>
 
-                <p:outputLabel value="Ciudad" for="ciudad_u"/>
-                <p:selectOneMenu id="ciudad_u" value="#{usuarioBean.usuario.cuidad}" converter="#{ciudadConverter}">
-                    <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true"/>
-                    <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
-                                   value="#{usuarioBean.ciudaes}"/>
-                </p:selectOneMenu>
-                <p:message for="ciudad_u"/>
+                            </div>
+                        </div>
+                    </p:dataViewListItem>
 
-                <p:outputLabel value="Pasword" for="pasword_u"/>
-                <p:password id="pasword_u" value="#{usuarioBean.usuario.password}" required="true"/>
-                <p:message for="pasword_u"/>
 
-            </h:panelGrid>
+                </p:dataView>
+            </h:form>
+        </div>
+    </div>
 
-            <p:growl showDetail="true" for="msj-bean"/>
-            <p:commandButton value="Registrar usuario" action="#{usuarioBean.registarUusario}" update="@form"
-                             icon="pi pi-user-plus"/>
-
-        </h:form>
-    </p:panel>
 </h:body>
 </html>

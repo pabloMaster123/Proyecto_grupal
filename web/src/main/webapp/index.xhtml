@@ -26,7 +26,7 @@
                         <a href="/"
                            class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
                         </a>
-                        <span class="pi pi-shopping-cart" style="front-size:2rem;margin-right: 5px"></span>
+                        <span class="pi pi-shopping-cart" style="front-size:2rem;margin-right: 20px"></span>
                         <span class="fs-4">Unishop</span>
                         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                             <li>
@@ -42,21 +42,27 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link text-white">
+                                <a href="registrarSubasta.xhtml" class="nav-link text-white">
                                     <i class="pi pi-save bi d-block mx-auto mb-1 icon-menu"></i>
-                                    Crear usuario
+                                    Crear Subasata
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link text-white">
                                     <i class="pi pi-star bi d-block mx-auto mb-1 icon-menu"></i>
-                                    Products
+                                    Compras
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link text-white">
                                     <i class="pi pi-star bi d-block mx-auto mb-1 icon-menu"></i>
-                                    Customers
+                                    Productos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link text-white">
+                                    <i class="pi pi-star bi d-block mx-auto mb-1 icon-menu"></i>
+                                    Chat
                                 </a>
                             </li>
                         </ul>
@@ -69,8 +75,8 @@
                     <div class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto">
                         <h:form>
                             <p:inputText style="width: 300px" placeholder="Que producto desea Buscar?" required="true"
-                                         value="#{buscarBean.busqueda}"/>
-                            <p:commandButton icon="pi pi-search" action="#{buscarBean.buscar}" update="@form"/>
+                                         value="#{buscarProductoBean.busqueda}"/>
+                            <p:commandButton icon="pi pi-search" action="#{buscarProductoBean.buscar}" update="@form"/>
                         </h:form>
 
                     </div>

@@ -1,7 +1,9 @@
 package co.edu.uniquindio.proyecto.bean;
 
 import co.edu.uniquindio.proyecto.entidades.Producto;
+import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.servicios.ProductoServicio;
+import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,10 @@ import java.util.List;
 
 @Component
 @ViewScoped
-public class BuscarBean {
+public class BuscarUsuariosBean {
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private String busqueda;
 
     @Getter @Setter
@@ -24,16 +27,16 @@ public class BuscarBean {
     private String busquedaParametro;
 
     @Getter @Setter
-    private List<Producto> productos;
+    private List<Usuario> usuarios;
 
     @Autowired
-    private ProductoServicio productoServicio;
+    private UsuarioServicio usuarioServicio;
 
     @PostConstruct
     public void inicializar(){
         if (busquedaParametro != null && !busquedaParametro.isEmpty()){
             try {
-                productos = productoServicio.listarProductoNombre(busquedaParametro);
+                usuarios = usuarioServicio.listarNombre(busquedaParametro);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -41,7 +44,7 @@ public class BuscarBean {
     }
 
     public String buscar(){
-        return "resultado-busqueda?faces-redirect=true&busqueda="+busqueda;
+        return "resultado-cliente?faces-redirect=true&busqueda="+busqueda;
     }
 
 }

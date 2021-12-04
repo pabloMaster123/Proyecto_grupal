@@ -65,11 +65,27 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     }
 
     @Override
+    public List<Usuario> listarNombre(String nombre) throws Exception {
+        return usuarioRepo.listarUsuarioNombre(nombre);
+    }
+
+    @Override
     public Usuario obtenerUsuario(String codigo) throws Exception {
         Optional<Usuario> buscado = usuarioRepo.findById(codigo);
 
         if (buscado.isEmpty()){
             throw new Exception("El codigo del usuario no existe");
+        }
+
+        return  buscado.get();
+    }
+
+    @Override
+    public Usuario obtenerUsuarioNombre(String nombre) throws Exception {
+        Optional<Usuario> buscado = usuarioRepo.findByNombre(nombre);
+
+        if (buscado.isEmpty()){
+            throw new Exception("El nombre del usuario no existe");
         }
 
         return  buscado.get();
