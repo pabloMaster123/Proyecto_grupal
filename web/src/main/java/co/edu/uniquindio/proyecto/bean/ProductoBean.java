@@ -54,6 +54,9 @@ public class ProductoBean implements Serializable {
     @Value("${upload.url}")
     private String urlUpload;
 
+    @Value("#{seguridadBean.usuarioSesion}")
+    private Usuario usuarioSesion;
+
     @PostConstruct
     public void inicializar() {
         producto = new Producto();
@@ -66,7 +69,7 @@ public class ProductoBean implements Serializable {
     public void registarProducto() {
         try {
             if (!imagenes.isEmpty()) {
-                Usuario usuario = usuarioServicio.obtenerUsuario("313");
+                Usuario usuario = usuarioServicio.obtenerUsuario(usuarioSesion.getCodigo());
                 producto.setUsuario(usuario);
                 producto.setRuta(imagenes);
                 productoServicio.publicarProducto(producto);

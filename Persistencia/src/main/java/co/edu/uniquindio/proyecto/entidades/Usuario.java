@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,12 +37,15 @@ public class Usuario extends Persona implements Serializable {
     private List<Chat> chats;
 
     @ManyToMany
+    @ToString.Exclude
     private List<Producto> productos;
 
     @ManyToMany
+    @ToString.Exclude
     private List<Producto> productosFavoritos;
 
     @ManyToMany
+    @ToString.Exclude
     private List<Producto> productosCarrito;
 
     @ElementCollection

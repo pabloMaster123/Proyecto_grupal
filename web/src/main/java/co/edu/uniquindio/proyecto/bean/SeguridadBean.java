@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.ApplicationScope;
 
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
 
 @Scope("session")
@@ -31,12 +32,18 @@ public class SeguridadBean implements Serializable {
 
         if(!email.isEmpty() && !password.isEmpty()) {
             try {
-                usuarioServicio.login(email, password);
-                return "index)faces-redirect=true";
+                usuarioSesion = usuarioServicio.login(email, password);
+                autenticado = true;
+                return "index?faces-redirect=true";
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         return null;
+    }
+
+    public String cerrarSesion() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "index?faces-redirect=true";
     }
 }

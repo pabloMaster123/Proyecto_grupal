@@ -11,3 +11,12 @@ background: gray;
     margin-bottom: 10px;
 }
 
+#info-sesion{
+    position: relative;
+}
+
+#info-sesion > * {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
