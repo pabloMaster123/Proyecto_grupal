@@ -92,7 +92,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     }
 
     @Override
-    public Usuario Login(String email, String pasword) throws Exception {
+    public Usuario login(String email, String pasword) throws Exception {
         return  usuarioRepo.findByEmailAndAndPassword(email,pasword).orElseThrow(() -> new Exception("Datos Incorrectos"));
     }
 
