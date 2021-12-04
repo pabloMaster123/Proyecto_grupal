@@ -1,0 +1,36 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_STACK_OVERFLOW (0xc00000fd) at pc=0x00007fff8b8d7d73, pid=4864, tid=4852
+#
+# JRE version: Java(TM) SE Runtime Environment 18.9 (11.0.12+8) (build 11.0.12+8-LTS-237)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM 18.9 (11.0.12+8-LTS-237, mixed mode, tiered, compressed oops, g1 gc, windows-amd64)
+# Problematic frame:
+# V  [jvm.dll+0x367d73]
+#
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:TieredStopAtLevel=1 -Xverify:none -Dspring.output.ansi.enabled=always -javaagent:Z:\Descargas\IntelliJ IDEA 2021.2.2\lib\idea_rt.jar=2898:Z:\Descargas\IntelliJ IDEA 2021.2.2\bin -Dcom.sun.management.jmxremote -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -Dfile.encoding=UTF-8 co.edu.uniquindio.proyecto.WebApplication
+
+Host: Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz, 12 cores, 7G,  Windows 10 , 64 bit Build 19041 (10.0.19041.928)
+Time: Fri Dec  3 22:51:06 2021 Hora est. Pacífico, Sudamérica elapsed time: 0.220555 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000013cf1096800):  JavaThread "Common-Cleaner" daemon [_thread_in_vm, id=4852, stack(0x0000002c08e00000,0x0000002c08f00000)]
+
+Stack: [0x0000002c08e00000,0x0000002c08f00000],  sp=0x0000002c08eff400,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x367d73]
+V  [jvm.dll+0x617cc2]
+V  [jvm.dll+0x36882a]
+V  [jvm.dll+0x368ab7]
+V  [jvm.dll+0x3d8a21]
+V  [jvm.dll+0x716359]
+V  [jvm.dll+0x70f064]
