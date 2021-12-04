@@ -66,7 +66,7 @@ public class Producto implements Serializable {
     @ElementCollection
     private List<Categoria> categorias;
 
-    @ManyToMany(mappedBy = "productos")
+    @ManyToMany
     private List<Usuario> usuarios;
 
     @JoinColumn(nullable = false)
