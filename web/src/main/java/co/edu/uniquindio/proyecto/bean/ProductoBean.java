@@ -71,15 +71,15 @@ public class ProductoBean implements Serializable {
                 producto.setRuta(imagenes);
                 productoServicio.publicarProducto(producto);
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "alerta", "Producto creado satisfactoriamente");
-                FacesContext.getCurrentInstance().addMessage(null, msg);
+                FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
             }else{
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "alerta", "Es necesario una imagen");
-                FacesContext.getCurrentInstance().addMessage(null, msg);
+                FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
             }
         } catch (Exception e) {
             e.printStackTrace();
             FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "alerta", e.getMessage());
-            FacesContext.getCurrentInstance().addMessage(null, msg1);
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg1);
         }
     }
 

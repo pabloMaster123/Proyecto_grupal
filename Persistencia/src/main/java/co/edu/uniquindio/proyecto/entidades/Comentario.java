@@ -6,6 +6,8 @@ import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -38,6 +40,7 @@ public class Comentario implements Serializable {
     private Usuario codigo_usuario;
 
     @Column(nullable = false)
+    @NotBlank
     private  String mensaje;
 
     @Column(nullable = true)
@@ -47,6 +50,7 @@ public class Comentario implements Serializable {
     private LocalDate fecha_comentario;
 
     @Column(nullable = true)
+    @Positive
     private Integer calificacion;
 
     public Comentario(Producto producto, Usuario codigo_usuario, String mensaje, String respuesta, LocalDate fecha_comentario, Integer calificacion) {

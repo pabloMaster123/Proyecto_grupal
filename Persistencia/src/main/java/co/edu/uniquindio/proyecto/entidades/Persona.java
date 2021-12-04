@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Getter
@@ -24,18 +25,23 @@ public class Persona implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @NotBlank
     private String codigo;
 
     @Column(nullable = false)
+    @NotBlank
     private String nombre;
 
     @Column(nullable = false,unique = true,length = 150)
     @Length(max = 150)
+    @NotBlank
     private String email;
 
     @Column(nullable = false)
+    @NotBlank
     private String username;
 
     @Column(nullable = false)
+    @NotBlank
     private String password;
 }

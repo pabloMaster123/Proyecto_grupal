@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -21,27 +22,36 @@ public class Producto implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @NotBlank
     private String codigo;
 
     @Column(nullable = false,length = 30)
+    @NotBlank
     private String nombre_producto; //usted en e inex está llamando la propiedad nombre, pero acá se llama es nombre_producto. Ojo con eso.
 
     @Positive
     @Column(nullable = false)
+    @NotBlank
+    @Positive
     private Integer unidades_producto;
 
     @Column(nullable = false)
+    @NotBlank
     private String descripsion_producto;
 
     @Positive
     @Column(nullable = false)
+    @NotBlank
     private Double precio_producto;
 
     @Future
     @Column(nullable = false)
+    @NotBlank
     private LocalDateTime fecha_limite;
 
     @Column(nullable = false)
+    @NotBlank
+    @Positive
     private Integer descuento;
 
     @ToString.Exclude
