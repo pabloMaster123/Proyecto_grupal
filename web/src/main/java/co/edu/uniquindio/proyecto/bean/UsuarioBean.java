@@ -54,4 +54,6 @@ public class UsuarioBean implements Serializable {
         }
     }
 
+
+    //hola
 }
