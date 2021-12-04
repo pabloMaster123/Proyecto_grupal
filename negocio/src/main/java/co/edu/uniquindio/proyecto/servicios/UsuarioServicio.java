@@ -20,7 +20,7 @@ public interface UsuarioServicio {
 
     Usuario obtenerUsuarioNombre(String nombre) throws Exception;
 
-    Usuario Login(String email, String pasword) throws Exception;
+    Usuario login(String email, String pasword) throws Exception;
 
     Usuario recuperarContraseña(Usuario u) throws Exception;
 

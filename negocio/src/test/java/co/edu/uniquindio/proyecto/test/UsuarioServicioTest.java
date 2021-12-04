@@ -83,7 +83,7 @@ public class UsuarioServicioTest {
     @Test
     public void LoginTest(){
         try {
-            Usuario usuario = usuarioServicio.Login("usuario2", "fokakjd56");
+            Usuario usuario = usuarioServicio.login("usuario2", "fokakjd56");
             Assertions.assertNotNull(usuario);
         } catch (Exception e) {
             e.printStackTrace();
