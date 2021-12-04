@@ -101,20 +101,25 @@
 
                 <p:outputLabel value="Codigo" for="codigo_p"/>
                 <p:inputText id="codigo_p" value="#{productoBean.producto.codigo}" required="true"/>
+                <p:message for="codigo_p"/>
 
                 <p:outputLabel value="Nombre" for="nombre_p"/>
                 <p:inputText id="nombre_p" value="#{productoBean.producto.nombre_producto}" required="true"/>
+                <p:message for="nombre_p"/>
 
                 <p:outputLabel value="Unidades Producto" for="unidades_p"/>
                 <p:inputText id="unidades_p" value="#{productoBean.producto.unidades_producto}" required="true"/>
+                <p:message for="unidades_p"/>
 
                 <p:outputLabel value="Precio" for="precio_p"/>
                 <p:inputText id="precio_p" value="#{productoBean.producto.precio_producto}" required="true"/>
+                <p:message for="precio_p"/>
 
                 <p:outputLabel value="Categorias" for="categorias_p" />
                 <p:selectManyMenu id="categorias_p" value="#{productoBean.producto.categorias}" showCheckbox="true" required="true" >
                     <f:selectItems value="#{productoBean.categorias}" var="categoria" />
                 </p:selectManyMenu>
+                <p:message for="categorias_p"/>
 
                 <p:outputLabel value="Ciudad" for="ciudad_p"/>
                 <p:selectOneMenu id="ciudad_p" value="#{productoBean.producto.ciudad}" converter="#{ciudadConverter}">
@@ -122,21 +127,26 @@
                     <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
                                    value="#{productoBean.ciudaes}"/>
                 </p:selectOneMenu>
+                <p:message for="ciudad_p"/>
 
                 <p:outputLabel value="Fecha limite" for="fecha_p"/>
                 <p:datePicker id="fecha_p" value="#{productoBean.producto.fecha_limite}" required="true"/>
+                <p:message for="fecha_p"/>
 
                 <p:outputLabel value="Descuento" for="descuento_p"/>
                 <p:inputText id="descuento_p" value="#{productoBean.producto.descuento}" required="true"/>
+                <p:message for="descuento_p"/>
 
                 <p:outputLabel for="imagenes_producto" value="Imágenes: "/>
                 <p:fileUpload id="imagenes_producto" listener="#{productoBean.subirImagenes}" mode="advanced"
                               multiple="true" sizeLimit="6000000" fileLimit="5"
                               allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true"/>
+                <p:message for="imagenes_producto"/>
 
                 <p:outputLabel value="Descripsion" for="descripsion_p"/>
                 <p:textEditor id="descripsion_p" value="#{productoBean.producto.descripsion_producto}" height="300"
                               secure="false"/>
+                <p:message for="descripsion_p"/>
 
             </h:panelGrid>
 
