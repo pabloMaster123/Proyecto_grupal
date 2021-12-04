@@ -3,6 +3,9 @@ package co.edu.uniquindio.proyecto.entidades;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,6 +16,7 @@ import java.util.List;
 public class Usuario extends Persona implements Serializable {
 
     @ManyToOne
+    @NotNull
     private Ciudad cuidad; //OJO con los nombres de las variables, debe usar las variables como se llaman en SU proyecto. NO en el mío.
 
     @OneToMany(mappedBy = "codigo_usuario")

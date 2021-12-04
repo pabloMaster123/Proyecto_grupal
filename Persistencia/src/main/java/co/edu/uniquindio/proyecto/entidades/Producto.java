@@ -1,12 +1,14 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -24,33 +26,31 @@ public class Producto implements Serializable {
     @EqualsAndHashCode.Include
     @NotBlank
     private String codigo;
+    @Length(min=1, max=5,message ="el codigo debe tener entre 1 y 5 caracteres")
+
 
     @Column(nullable = false,length = 30)
     @NotBlank
+    @Length(min=3, max=15,message ="el nombre debe tener entre 3 y 15 caracteres")
     private String nombre_producto; //usted en e inex está llamando la propiedad nombre, pero acá se llama es nombre_producto. Ojo con eso.
 
-    @Positive
     @Column(nullable = false)
-    @NotBlank
     @Positive
     private Integer unidades_producto;
 
     @Column(nullable = false)
-    @NotBlank
+    @NotBlank(message = "debe contener una descripcion")
     private String descripsion_producto;
 
-    @Positive
+    @Positive(message = "debe ser un numero positivo")
     @Column(nullable = false)
-    @NotBlank
     private Double precio_producto;
 
     @Future
     @Column(nullable = false)
-    @NotBlank
     private LocalDateTime fecha_limite;
 
     @Column(nullable = false)
-    @NotBlank
     @Positive
     private Integer descuento;
 
@@ -71,6 +71,7 @@ public class Producto implements Serializable {
 
     @JoinColumn(nullable = false)
     @ManyToOne
+    @NotNull
     private Ciudad ciudad;
 
     @JoinColumn(nullable = false)
@@ -95,6 +96,7 @@ public class Producto implements Serializable {
      * Es importante la palabra get al inicio, por eso sale error en el index.
      * @return
      */
+    @NotNull
     public String getImagenPrincipal(){
         if(ruta!= null && !ruta.isEmpty()){
             return ruta.get(0);
