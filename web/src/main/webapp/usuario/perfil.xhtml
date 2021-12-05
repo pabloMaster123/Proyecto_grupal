@@ -7,6 +7,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<<<<<<< HEAD
 
 <ui:composition template="WEB-INF/template.xhtml">
 <ui:define name="title">Perfil De Usuario</ui:define>
@@ -14,6 +15,76 @@
 <ui:define name="content">
 
         <div >
+=======
+<<<<<<<< HEAD:web/src/main/webapp/usuario/perfil.xhtml
+<ui:composition template="../WEB-INF/template.xhtml">
+<ui:define name="title">Perfil Usuario</ui:define>
+<ui:define name="content">
+<ui:composition template="../WEB-INF/template.xhtml">
+    <ui:define name="title">Usuario</ui:define>
+
+    <ui:define name="content">
+
+        <p:panel header="Productos">
+        <h:form>
+            <p:dataView value="#{perfilBean.listaProductos}" var="producto" gridIcon="pi pi-th-large"
+                        listIcon="pipi-bars">
+                <p:dataViewGridItem>
+                    <div class="card">
+                        <img src="/uploads/#{producto.imagenPrincipal}" class="card-img-top" alt="..."/>
+
+                        <div class="card-body">
+                            <h5 class="card-title">#{producto.nombre_producto}</h5>
+                            <p class="card-text">#{producto.precio_producto}</p>
+                            <hr/>
+                            <p:commandButton value="Ver detalle" styleClass="ui-button-raised"
+                                             icon="pi pi-arrow-right" iconPos="right"
+                                             action="#{inicioBean.irADetalle(producto.codigo)}"/>
+
+                        </div>
+                    </div>
+                </p:dataViewGridItem>
+
+                <p:dataViewListItem>
+                    <div class="row d-flex item-pro">
+                        <div class="col-lg-2 col-md-1" style="text-align: center">
+                            <p:graphicImage url="/uploads/#{producto.imagenPrincipal}"
+                                            styleClass="imagen-producto"/>
+                        </div>
+                        <div class="col-lg-8 col-md-1 align-self-center">
+                            <p:outputPanel>
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputText value="Nombre:"/>
+                                    <h:outputText value="#{producto.nombre_producto}" style="font-weight:bold"/>
+                                    <h:outputText value="Precio:"/>
+                                    <h:outputText value="#{producto.precio_producto}"/>
+                                    <h:outputText value="Categorías:"/>
+                                    <h:outputText value="#{producto.categorias}"/>
+                                </h:panelGrid>
+                            </p:outputPanel>
+                        </div>
+                        <div class="col-lg-2 col-md-1 align-self-center">
+                            <p:commandButton value="Ver detalle" styleClass="ui-button-raised"
+                                             icon="pi pi-arrow-right" iconPos="right"
+                                             action="#{inicioBean.irADetalle(producto.codigo)}"/>
+
+                        </div>
+                    </div>
+                </p:dataViewListItem>
+
+            </p:dataView>
+        </h:form>
+        </p:panel>
+========
+
+<ui:composition template="WEB-INF/template.xhtml">
+<ui:define name="title">Perfil De Usuario</ui:define>
+>>>>>>>> fd43c07 (Se creo la pagina perfil y se configuro la subasata):web/src/main/webapp/perfil.xhtml
+
+<ui:define name="content">
+
+        <p:panel header="Compras">
+>>>>>>> fd43c07 (Se creo la pagina perfil y se configuro la subasata)
         <h:form>
             <p:dataView value="#{perfilBean.listaCompra}" var="compra" gridIcon="pi pi-th-large"
                         listIcon="pipi-bars">
@@ -54,7 +125,16 @@
                 </p:dataViewListItem>
             </p:dataView>
         </h:form>
+<<<<<<< HEAD
         </div>
     </ui:define>
 </ui:composition>
+=======
+        </p:panel>
+
+    </ui:define>
+</ui:composition>
+</ui:define>
+</ui:composition>
+>>>>>>> fd43c07 (Se creo la pagina perfil y se configuro la subasata)
 </html>

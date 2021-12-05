@@ -13,60 +13,66 @@
 
 <ui:define name="content">
 
-
-
-    <p:panel header="Registra Producto">
+    <p:panel header="Registra Subasta">
         <h:form>
+
             <h:panelGrid columns="2" cellpadding="5">
 
-                <p:outputLabel value="Codigo" for="codigo_p"/>
-                <p:inputText id="codigo_p" value="#{productoBean.producto.codigo}" required="true"/>
+                <p:outputLabel value="Codigo" for="codigo_s"/>
+                <p:inputText id="codigo_s" value="#{productoBean.producto.codigo}" required="true"/>
 
-                <p:outputLabel value="Nombre" for="nombre_p"/>
-                <p:inputText id="nombre_p" value="#{productoBean.producto.nombre_producto}" required="true"/>
+                <p:outputLabel value="Fecha limite" for="fecha_s"/>
+                <p:datePicker id="fecha_s" value="#{productoBean.producto.fecha_limite}" required="true"/>
 
-                <p:outputLabel value="Unidades Producto" for="unidades_p"/>
-                <p:inputText id="unidades_p" value="#{productoBean.producto.unidades_producto}" required="true"/>
-
-                <p:outputLabel value="Precio" for="precio_p"/>
-                <p:inputText id="precio_p" value="#{productoBean.producto.precio_producto}" required="true"/>
-
-                <p:outputLabel value="Categorias" for="categorias_p" />
-                <p:selectManyMenu id="categorias_p" value="#{productoBean.producto.categorias}" showCheckbox="true" required="true" >
-                    <f:selectItems value="#{productoBean.categorias}" var="categoria" />
-                </p:selectManyMenu>
-
-                <p:outputLabel value="Ciudad" for="ciudad_p"/>
-                <p:selectOneMenu id="ciudad_p" value="#{productoBean.producto.ciudad}" converter="#{ciudadConverter}">
+                <p:outputLabel value="Producto" for="producto_s"/>
+                <p:selectOneMenu id="producto_s" value="#{productoBean.producto.ciudad}" converter="#{ciudadConverter}">
                     <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true"/>
                     <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
                                    value="#{productoBean.ciudaes}"/>
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Fecha limite" for="fecha_p"/>
-                <p:datePicker id="fecha_p" value="#{productoBean.producto.fecha_limite}" required="true"/>
-
-                <p:outputLabel value="Descuento" for="descuento_p"/>
-                <p:inputText id="descuento_p" value="#{productoBean.producto.descuento}" required="true"/>
-
-                <p:outputLabel for="imagenes_producto" value="Imágenes: "/>
-                <p:fileUpload id="imagenes_producto" listener="#{productoBean.subirImagenes}" mode="advanced"
-                              multiple="true" sizeLimit="6000000" fileLimit="5"
-                              allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true"/>
-
-                <p:outputLabel value="Descripsion" for="descripsion_p"/>
-                <p:textEditor id="descripsion_p" value="#{productoBean.producto.descripsion_producto}" height="300"
-                              secure="false"/>
-
             </h:panelGrid>
 
             <p:growl showDetail="true" for="msj-bean"/>
-            <p:commandButton value="Registrar producto" action="#{productoBean.registarProducto}" update="@form"
+            <p:commandButton value="Registrar Subasta" action="#{productoBean.registarProducto}" update="@form"
                              icon="pi pi-user-plus"/>
-
 
         </h:form>
     </p:panel>
+
+
+
+    <p:panel header="Registra Detalles Subasta">
+
+                <h:form>
+                    <h:panelGrid columns="2" cellpadding="5">
+
+                        <p:outputLabel value="Codigo" for="codigo_d"/>
+                        <p:inputText id="codigo_p" value="#{productoBean.producto.codigo}" required="true"/>
+
+                        <p:outputLabel value="Fecha limite" for="fecha_d"/>
+                        <p:datePicker id="fecha_d" value="#{productoBean.producto.fecha_limite}" required="true"/>
+
+                        <p:outputLabel value="Valor" for="valor_d"/>
+                        <p:inputText id="valor_d" value="#{productoBean.producto.nombre_producto}" required="true"/>
+
+                        <p:outputLabel value="Subasta" for="subasta_d"/>
+                        <p:selectOneMenu id="subasta_d" value="#{productoBean.producto.ciudad}" converter="#{ciudadConverter}">
+                            <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true"/>
+                            <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
+                                           value="#{productoBean.ciudaes}"/>
+                        </p:selectOneMenu>
+
+                    </h:panelGrid>
+
+                    <p:growl showDetail="true" for="msj-bean"/>
+                    <p:commandButton value="Registrar Detalles Subasta" action="#{productoBean.registarProducto}" update="@form"
+                                     icon="pi pi-user-plus"/>
+
+                </h:form>
+            </p:panel>
+
+
 </ui:define>
 
 </ui:composition>

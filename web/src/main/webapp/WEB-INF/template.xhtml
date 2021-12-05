@@ -18,6 +18,7 @@
 <h:body>
 
 
+
   <div id="header">
       <div class="px-3 py-2 bg-dark text-white">
         <div class="container">
@@ -47,26 +48,10 @@
                   Crear Subasata
                 </a>
               </li>
-
               <li jsf:rendered="#{seguridadBean.autenticado}">
-                <a href="/usuario/CompraUsuario.xhtml" class="nav-link text-white">
-                  <i class="pi pi-wallet bi d-block mx-auto mb-1 icon-menu"></i>
-                  Mis Compras
-                </a>
-              </li>
-
-              <li jsf:rendered="#{seguridadBean.autenticado}">
-              <a href="ProductoUsuario.xhtml" class="nav-link text-white">
-              <i class="pi pi-star bi d-block mx-auto mb-1 icon-menu"></i>
-              Mis Productos
-              </a>
-              </li>
-
-              <li>
-                <a href="perfil.xhtml" class="nav-link text-white">
+              <a href="perfil.xhtml" class="nav-link text-white">
                   <i class="pi pi-user bi d-block mx-auto mb-1 icon-menu"></i>
                   Perfil
-
                 </a>
               </li>
               <li jsf:rendered="#{seguridadBean.autenticado}">
@@ -76,7 +61,6 @@
                 </a>
               </li>
             </ul>
-
           </div>
         </div>
       </div>
@@ -100,9 +84,8 @@
             </h:form>
 
             <div id="info-sesion" jsf:rendered="#{seguridadBean.autenticado}">
-              <span>Usuario: #{ seguridadBean.usuarioSesion.nombre}</span>
+              <span>#{seguridadBean.usuarioSesion.nombre}</span>
               <h:form>
-                <p> </p>
                 <p:commandButton value="Cerrar Sesion" styleClass="btn btn-primary"
                                  action="#{seguridadBean.cerrarSesion}"/>
               </h:form>
