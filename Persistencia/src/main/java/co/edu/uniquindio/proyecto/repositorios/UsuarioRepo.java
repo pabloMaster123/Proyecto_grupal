@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyecto.repositorios;
 
-import co.edu.uniquindio.proyecto.entidades.Chat;
-import co.edu.uniquindio.proyecto.entidades.Persona;
-import co.edu.uniquindio.proyecto.entidades.Producto;
-import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.entidades.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,5 +28,12 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
 
     @Query("select u from Usuario u where u.nombre like concat('%' , :nombre, '%') ")
     List<Usuario> listarUsuarioNombre(String nombre);
+
+
+    @Query("select p from Usuario u INNER join u.productos p where u.codigo= :id")
+    List<Producto> listarProductos(String id);
+
+    @Query("select c from Usuario u INNER join u.compras c where u.codigo= :id")
+    List<Compra> listarCompras(String id);
 
 }

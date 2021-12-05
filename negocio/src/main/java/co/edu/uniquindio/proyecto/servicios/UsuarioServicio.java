@@ -1,5 +1,7 @@
 package co.edu.uniquindio.proyecto.servicios;
 
+import co.edu.uniquindio.proyecto.entidades.Compra;
+import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 
 import java.util.List;
@@ -23,5 +25,9 @@ public interface UsuarioServicio {
     Usuario login(String email, String pasword) throws Exception;
 
     Usuario recuperarContraseña(Usuario u) throws Exception;
+
+    List<Producto> listarProductos(String codigo);
+
+    List<Compra> listarCompras(String codigo);
 
 }

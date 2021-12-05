@@ -24,8 +24,6 @@ public class ProductoServicioImpl implements ProductoServicio{
     @Autowired
     private ComentarioRepo comentarioRepo;
 
-
-
     @Override
     public Producto publicarProducto(Producto p) throws Exception {
         Optional<Producto> buscado = productoRepo.findById(p.getCodigo());

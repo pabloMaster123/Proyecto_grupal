@@ -107,4 +107,15 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         return  usuarioRepo.save(u);
     }
 
+    @Override
+    public List<Producto> listarProductos(String codigo)  {
+        return usuarioRepo.listarProductos(codigo);
+    }
+
+    @Override
+    public List<Compra> listarCompras(String codigo) {
+        return usuarioRepo.listarCompras(codigo);
+    }
+
+
 }
