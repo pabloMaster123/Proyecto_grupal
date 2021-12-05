@@ -30,36 +30,36 @@
             <span class="fs-4">  <a href="index.xhtml" class="nav-link text-white"> Unishop  </a></span>
             <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
               <li>
-                <a href="index.xhtml" class="nav-link text-white">
+                <a href="/index.xhtml" class="nav-link text-white">
                   <i class="pi pi-home bi d-block mx-auto mb-1 icon-menu"></i>
                   Home
                 </a>
               </li>
-              <li>
-                <a href="registrar_producto.xhtml" class="nav-link text-white">
+              <li jsf:rendered="#{seguridadBean.autenticado}">
+                <a href="/usuario/registrar_producto.xhtml" class="nav-link text-white">
                   <i class="pi pi-save bi d-block mx-auto mb-1 icon-menu"></i>
                   Crear Producto
                 </a>
               </li>
-              <li>
-                <a href="registrarSubasta.xhtml" class="nav-link text-white">
+              <li jsf:rendered="#{seguridadBean.autenticado}">
+                <a href="/usuario/registrarSubasta.xhtml" class="nav-link text-white">
                   <i class="pi pi-save bi d-block mx-auto mb-1 icon-menu"></i>
                   Crear Subasata
                 </a>
               </li>
-              <li>
-                <a href="CompraUsuario.xhtml" class="nav-link text-white">
+              <li jsf:rendered="#{seguridadBean.autenticado}">
+                <a href="/usuario/CompraUsuario.xhtml" class="nav-link text-white">
                   <i class="pi pi-wallet bi d-block mx-auto mb-1 icon-menu"></i>
-                  Compras
+                  Mis Compras
                 </a>
               </li>
-              <li>
+              <li jsf:rendered="#{seguridadBean.autenticado}">
                 <a href="ProductoUsuario.xhtml" class="nav-link text-white">
                   <i class="pi pi-star bi d-block mx-auto mb-1 icon-menu"></i>
-                  Productos
+                  Mis Productos
                 </a>
               </li>
-              <li>
+              <li jsf:rendered="#{seguridadBean.autenticado}">
                 <a href="#" class="nav-link text-white">
                   <i class="pi pi-send bi d-block mx-auto mb-1 icon-menu"></i>
                   Chat
