@@ -13,12 +13,38 @@
 
     <ui:define name="content">
 
+        <p:dataView value="#{detalleProductoBean.producto}" var="producto" >
+            <p:dataViewListItem>
+                <div class="row d-flex item-pro">
+                    <div class="col-lg-2 col-md-1" style="text-align: center">
+                        <p:graphicImage url="/uploads/#{producto.imagenPrincipal}"
+                                        styleClass="imagen-producto"/>
+                    </div>
+                    <div class="col-lg-8 col-md-1 align-self-center">
+                        <p:outputPanel>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Nombre:"/>
+                                <h:outputText value="#{producto.nombre_producto}" style="font-weight:bold"/>
+                                <h:outputText value="Precio:"/>
+                                <h:outputText value="#{producto.precio_producto}"/>
+                                <h:outputText value="Categorías:"/>
+                                <h:outputText value="#{producto.categorias}"/>
+                            </h:panelGrid>
+                        </p:outputPanel>
+                    </div>
+
+                </div>
+            </p:dataViewListItem>
+        </p:dataView>
 
 
-
-        <p:panel header="Comentario">
+        <p:panel header="Comentarios">
             <p:dataList id="lista-c" value="#{detalleProductoBean.comentarios}" var="comentario" emptyMessage="No hay comentarios" >
-                <p> #{comentario.mensaje} - #{comentario.codigo_usuario.nombre}</p>
+                <a></a>
+
+                <p>#{comentario.mensaje}</p>
+                <p> Autor: #{ comentario.codigo_usuario.nombre}</p>
+                <a>Calificacion</a>
                 <p:rating value="#{comentario.calificacion}" readonly="true"/>
             </p:dataList>
         </p:panel>
@@ -26,7 +52,7 @@
         <p:panel header="Hacer un comentario" styleClass="mt-3" rendered="#{seguridadBean.autenticado}">
 
             <h:form id="crear-comentario">
-                <h:panelGrid columns="2" cellpadding="3">
+                <h:panelGrid columns="2" cellpadding="20"  rows="3">
                     <p:inputTextarea value="#{detalleProductoBean.nuevoComentario.mensaje}"
                                      required="true" styleClass="comentario-usuario"/>
                     <p:rating value="#{detalleProductoBean.nuevoComentario.calificacion}"

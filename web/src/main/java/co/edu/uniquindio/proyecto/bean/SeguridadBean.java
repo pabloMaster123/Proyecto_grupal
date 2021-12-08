@@ -1,6 +1,8 @@
 package co.edu.uniquindio.proyecto.bean;
 
+import co.edu.uniquindio.proyecto.entidades.Administrador;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.servicios.AdministardorServicio;
 import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,8 +28,14 @@ public class SeguridadBean implements Serializable {
     @Getter @Setter
     private Usuario usuarioSesion;
 
+    @Getter @Setter
+    private Administrador administradorSesion;
+
     @Autowired
     private UsuarioServicio usuarioServicio;
+
+    @Autowired
+    private AdministardorServicio administardorServicio;
 
     public String iniciarSesion() {
 

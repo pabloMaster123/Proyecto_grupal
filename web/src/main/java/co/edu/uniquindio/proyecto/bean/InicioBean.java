@@ -23,12 +23,21 @@ public class InicioBean implements Serializable {
     @Getter @Setter
     private List<Producto> listaProductos;
 
+    @Getter @Setter
+    private Producto producto;
+
     @PostConstruct
     public void inicializar(){
         this.listaProductos = productoServicio.listarProductos();
     }
 
     public String irADetalle(String id){
+        try {
+            this.producto = productoServicio.obtenerProducto(id);
+            System.out.println(this.producto.getNombre_producto());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "detalleProducto?faces-redirect=true&amp;producto="+id;
     }
 
