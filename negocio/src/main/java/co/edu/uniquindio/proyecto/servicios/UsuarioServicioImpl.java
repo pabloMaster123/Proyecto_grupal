@@ -26,6 +26,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         if (buscado.isPresent()){
             throw new Exception("El email del usuario ya existe");
         }
+
         u.setComentarios(new ArrayList<Comentario>());
         u.setCompras(new ArrayList<Compra>());
         u.setChats(new ArrayList<Chat>());

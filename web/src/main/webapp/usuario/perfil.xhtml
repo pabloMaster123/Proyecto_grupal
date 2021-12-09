@@ -7,24 +7,15 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<<<<<<< HEAD
-
 <ui:composition template="WEB-INF/template.xhtml">
 <ui:define name="title">Perfil De Usuario</ui:define>
 
 <ui:define name="content">
 
         <div >
-=======
-<<<<<<<< HEAD:web/src/main/webapp/usuario/perfil.xhtml
-<ui:composition template="../WEB-INF/template.xhtml">
-<ui:define name="title">Perfil Usuario</ui:define>
-<ui:define name="content">
-<ui:composition template="../WEB-INF/template.xhtml">
-    <ui:define name="title">Usuario</ui:define>
+
 
     <ui:define name="content">
-
         <p:panel header="Productos">
         <h:form>
             <p:dataView value="#{perfilBean.listaProductos}" var="producto" gridIcon="pi pi-th-large"
@@ -75,16 +66,9 @@
             </p:dataView>
         </h:form>
         </p:panel>
-========
 
-<ui:composition template="WEB-INF/template.xhtml">
-<ui:define name="title">Perfil De Usuario</ui:define>
->>>>>>>> fd43c07 (Se creo la pagina perfil y se configuro la subasata):web/src/main/webapp/perfil.xhtml
-
-<ui:define name="content">
 
         <p:panel header="Compras">
->>>>>>> fd43c07 (Se creo la pagina perfil y se configuro la subasata)
         <h:form>
             <p:dataView value="#{perfilBean.listaCompra}" var="compra" gridIcon="pi pi-th-large"
                         listIcon="pipi-bars">
@@ -125,16 +109,14 @@
                 </p:dataViewListItem>
             </p:dataView>
         </h:form>
-<<<<<<< HEAD
         </div>
     </ui:define>
 </ui:composition>
-=======
+
         </p:panel>
 
     </ui:define>
 </ui:composition>
 </ui:define>
 </ui:composition>
->>>>>>> fd43c07 (Se creo la pagina perfil y se configuro la subasata)
 </html>

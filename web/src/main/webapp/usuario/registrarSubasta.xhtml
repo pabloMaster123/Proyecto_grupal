@@ -19,22 +19,22 @@
             <h:panelGrid columns="2" cellpadding="5">
 
                 <p:outputLabel value="Codigo" for="codigo_s"/>
-                <p:inputText id="codigo_s" value="#{productoBean.producto.codigo}" required="true"/>
+                <p:inputText id="codigo_s" value="#{subastaBean.subasta.codigo}" required="true"/>
 
                 <p:outputLabel value="Fecha limite" for="fecha_s"/>
-                <p:datePicker id="fecha_s" value="#{productoBean.producto.fecha_limite}" required="true"/>
+                <p:datePicker id="fecha_s" value="#{subastaBean.subasta.fecha_limite}" required="true"/>
 
                 <p:outputLabel value="Producto" for="producto_s"/>
-                <p:selectOneMenu id="producto_s" value="#{productoBean.producto.ciudad}" converter="#{ciudadConverter}">
+                <p:selectOneMenu id="producto_s" value="#{subastaBean.subasta.producto}" converter="#{ciudadConverter}">
                     <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true"/>
-                    <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
-                                   value="#{productoBean.ciudaes}"/>
+                    <f:selectItems var="producto" itemLabel="#{producto.nombre_producto}"
+                                   value="#{subastaBean.listaProductos}"/>
                 </p:selectOneMenu>
 
             </h:panelGrid>
 
             <p:growl showDetail="true" for="msj-bean"/>
-            <p:commandButton value="Registrar Subasta" action="#{productoBean.registarProducto}" update="@form"
+            <p:commandButton value="Registrar Subasta" action="#{subastaBean.publicarSubasta}" update="@form"
                              icon="pi pi-user-plus"/>
 
         </h:form>
@@ -48,25 +48,25 @@
                     <h:panelGrid columns="2" cellpadding="5">
 
                         <p:outputLabel value="Codigo" for="codigo_d"/>
-                        <p:inputText id="codigo_p" value="#{productoBean.producto.codigo}" required="true"/>
+                        <p:inputText id="codigo_p" value="#{subastaBean.detalleSubasta.codigo}" required="true"/>
 
                         <p:outputLabel value="Fecha limite" for="fecha_d"/>
-                        <p:datePicker id="fecha_d" value="#{productoBean.producto.fecha_limite}" required="true"/>
+                        <p:datePicker id="fecha_d" value="#{subastaBean.detalleSubasta.fecha_subasta}" required="true"/>
 
                         <p:outputLabel value="Valor" for="valor_d"/>
-                        <p:inputText id="valor_d" value="#{productoBean.producto.nombre_producto}" required="true"/>
+                        <p:inputText id="valor_d" value="#{subastaBean.detalleSubasta.valor}" required="true"/>
 
                         <p:outputLabel value="Subasta" for="subasta_d"/>
-                        <p:selectOneMenu id="subasta_d" value="#{productoBean.producto.ciudad}" converter="#{ciudadConverter}">
+                        <p:selectOneMenu id="subasta_d" value="#{subastaBean.detalleSubasta.codigo_subasta}" converter="#{ciudadConverter}">
                             <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true"/>
-                            <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
-                                           value="#{productoBean.ciudaes}"/>
+                            <f:selectItems var="subasta" itemLabel="#{subasta.codigo}"
+                                           value="#{subastaBean.listaSubastas}"/>
                         </p:selectOneMenu>
 
                     </h:panelGrid>
 
                     <p:growl showDetail="true" for="msj-bean"/>
-                    <p:commandButton value="Registrar Detalles Subasta" action="#{productoBean.registarProducto}" update="@form"
+                    <p:commandButton value="Registrar Detalles Subasta" action="#{subastaBean.DetalleDeSubasta}" update="@form"
                                      icon="pi pi-user-plus"/>
 
                 </h:form>

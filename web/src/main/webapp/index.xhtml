@@ -16,7 +16,7 @@
 
             <h1>Lista de productos</h1>
 
-            <h:form>
+                <h:form>
                 <p:dataView value="#{inicioBean.listaProductos}" var="producto" gridIcon="pi pi-th-large"
                             listIcon="pipi-bars">
                     <p:dataViewGridItem>
@@ -63,6 +63,47 @@
                     </p:dataViewListItem>
                 </p:dataView>
             </h:form>
+
+        <h1>Lista de subastas</h1>
+
+        <h:form>
+            <p:dataView value="#{inicioBean.listaSubastas}" var="subasta" gridIcon="pi pi-th-large"
+                        listIcon="pipi-bars">
+                <p:dataViewGridItem>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">#{subasta.codigo}</h5>
+                            <p class="card-text">#{subasta.producto.nombre_producto}</p>
+                            <p class="card-text">#{subasta.producto.codigo}</p>
+                            <p class="card-text">#{subasta.fecha_limite}</p>
+                            <hr/>
+                        </div>
+                    </div>
+                </p:dataViewGridItem>
+
+                <p:dataViewListItem>
+                    <div class="row d-flex item-pro">
+                        <div class="col-lg-2 col-md-1" style="text-align: center">
+                        </div>
+                        <div class="col-lg-8 col-md-1 align-self-center">
+                            <p:outputPanel>
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputText value="Codigo subasta:"/>
+                                    <h:outputText value="#{subasta.codigo}" style="font-weight:bold"/>
+                                    <h:outputText value="Nombre del producto:"/>
+                                    <h:outputText value="#{subasta.producto.nombre_producto}"/>
+                                    <h:outputText value="Codigo del producto:"/>
+                                    <h:outputText value="#{subasta.producto.codigo}"/>
+                                    <h:outputText value="Fecha limite:"/>
+                                    <h:outputText value="#{subasta.fecha_limite}"/>
+                                </h:panelGrid>
+                            </p:outputPanel>
+                        </div>
+                    </div>
+                </p:dataViewListItem>
+            </p:dataView>
+        </h:form>
+
     </ui:define>
 </ui:composition>
 </html>

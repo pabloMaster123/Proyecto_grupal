@@ -40,7 +40,6 @@ public class UsuarioBean implements Serializable {
         this.ciudaes = ciudadServicio.listarCuidad();
     }
 
-
     public void registarUusario(){
         try {
             usuarioServicio.registrarUsuario(usuario);
@@ -52,7 +51,4 @@ public class UsuarioBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage("msj-bean", msg1);
         }
     }
-
-
-    //hola
 }

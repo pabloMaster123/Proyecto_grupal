@@ -69,7 +69,7 @@ public class Producto implements Serializable {
     @ManyToMany
     private List<Usuario> usuarios;
 
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = true)
     @ManyToOne
     @NotNull
     private Ciudad ciudad;
