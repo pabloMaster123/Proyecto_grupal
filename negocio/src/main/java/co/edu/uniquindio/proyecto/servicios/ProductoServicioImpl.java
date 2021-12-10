@@ -1,9 +1,7 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.*;
-import co.edu.uniquindio.proyecto.repositorios.ComentarioRepo;
-import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
-import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
+import co.edu.uniquindio.proyecto.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +22,15 @@ public class ProductoServicioImpl implements ProductoServicio{
     @Autowired
     private ComentarioRepo comentarioRepo;
 
+    @Autowired
+    private CiudadRepo ciudadRepo;
+
+    @Autowired
+    private CompraRepo compraRepo;
+
+    @Autowired
+    private DetalleCompraRepo detalleCompraRepo;
+
     @Override
     public Producto publicarProducto(Producto p) throws Exception {
         Optional<Producto> buscado = productoRepo.findById(p.getCodigo());
@@ -32,15 +39,16 @@ public class ProductoServicioImpl implements ProductoServicio{
             throw new Exception("El codigo del producto ya existe");
         }
 
-        return productoRepo.save(p);    }
+        return productoRepo.save(p);
+    }
 
     @Override
     public Producto modificarProducto(Producto p) throws Exception {
         Optional<Producto> buscado = productoRepo.findById(p.getCodigo());
-        if (buscado.isPresent()){
+        if (buscado.isEmpty()){
             throw new Exception("El codigo del usuario no existe");
         }
-
+        System.out.println(p.toString());
         return productoRepo.save(p);
     }
 
@@ -167,5 +175,76 @@ public class ProductoServicioImpl implements ProductoServicio{
     public Categoria obtenerCategoria(String categoria) throws Exception {
         return Categoria.valueOf(categoria);
     }
+
+    @Override
+    public List<Producto> listarPorCategoria(String categoria) {
+        Categoria aux = Categoria.valueOf(categoria);
+        return productoRepo.listarProductoCategoria(aux);
+    }
+
+    @Override
+    public List<Producto> listarPorRangoDePrecio(String rango) {
+        String[] precios = rango.split("-");
+        Double precioMin = Double.valueOf(precios[0]);
+        Double precioMax = Double.valueOf(precios[1]);
+        return productoRepo.listarProductoRangoDePrecio(precioMin, precioMax);
+    }
+
+    @Override
+    public List<Producto> listarPorLugar(String ciudad) throws Exception {
+
+        Optional<Ciudad> aux = ciudadRepo.findByNombre(ciudad);
+
+        if(aux.isEmpty()) {
+            throw new Exception("No hay ciudades con ese nombre.");
+        }
+
+        return productoRepo.listarProductoPorCiudad(aux.get());
+    }
+
+    @Override
+    public Integer devolverCantidadDeUnidadesPorId(String id) throws Exception {
+
+        Optional<Producto> buscado = productoRepo.findById(id);
+
+        if (buscado.isEmpty()) {
+            throw new Exception("No existe un producto con el id indicado.");
+        }
+
+        return productoRepo.devolverCantidadDeUnidadesPorId(id);
+    }
+
+    @Override
+    public Integer devolverDescuentoPorId(String id) throws Exception {
+
+        Optional<Producto> buscado = productoRepo.findById(id);
+
+        if (buscado.isEmpty()) {
+            throw new Exception("No existe un producto con el id indicado.");
+        }
+
+        return productoRepo.devolverDescuentoPorId(id);
+    }
+
+    @Override
+    public Compra realizarCompra(Usuario usuario, Producto producto, String medioPago, Integer unidades) throws Exception {
+        Optional<Producto> buscado = productoRepo.findById(producto.getCodigo());
+
+        if (buscado.isEmpty()) {
+            throw new Exception("No existe un producto con el id indicado.");
+        }
+        if (unidades > buscado.get().getUnidades_producto()) {
+            throw new Exception("No existen las unidades suficientes para su compra.");
+        }
+        buscado.get().setUnidades_producto(buscado.get().getUnidades_producto()-unidades);
+        Producto auxP = productoRepo.save(buscado.get());
+        Compra compra = new Compra(usuario, medioPago, LocalDate.now());
+        System.out.println(compra.toString());
+        Compra aux = compraRepo.save(compra);
+        DetalleCompra detalleCompra = new DetalleCompra(aux.getCodigo(), auxP, unidades, producto.getPrecio_producto(), aux);
+        detalleCompraRepo.save(detalleCompra);
+        return aux;
+    }
+
 
 }

@@ -37,25 +37,25 @@ public class ComentarioTest {
     @Test
     @Sql("classpath:datos.sql")
     public void eliminarTest() {
-        Comentario comentario = comentarioRepo.findById("1").orElse(null);
+        Comentario comentario = comentarioRepo.findById(1).orElse(null);
         comentarioRepo.delete(comentario);
-        Comentario comentarioBuscar = comentarioRepo.findById("1").orElse(null);
+        Comentario comentarioBuscar = comentarioRepo.findById(1).orElse(null);
         Assertions.assertNull(comentarioBuscar);
     }
 
     @Test
     @Sql("classpath:datos.sql")
     public void actualizarTest() {
-        Comentario comentario = comentarioRepo.findById("1").orElse(null);
+        Comentario comentario = comentarioRepo.findById(1).orElse(null);
         comentario.setMensaje("Cambio mensaje");
-        Comentario comentarioBuscar = comentarioRepo.findById("1").orElse(null);
+        Comentario comentarioBuscar = comentarioRepo.findById(1).orElse(null);
         System.out.println(comentarioBuscar.getMensaje());
     }
 
     @Test
     @Sql("classpath:datos.sql")
     public void buscarTest() {
-        Comentario comentarioBuscar =comentarioRepo.findById("1").orElse(null);
+        Comentario comentarioBuscar =comentarioRepo.findById(1).orElse(null);
         System.out.println(comentarioBuscar.getMensaje());
     }
 

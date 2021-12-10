@@ -49,7 +49,7 @@ public class DetalleCompraTest {
     @Sql("classpath:datos.sql")
     public void actualizarTest() {
         DetalleCompra detalleCompra = detalleCompraRepo.findById("1").orElse(null);
-        detalleCompra.setPrecio_producto(189900);
+        detalleCompra.setPrecio_producto(189900.0);
         DetalleCompra detalleCompraBuscar = detalleCompraRepo.findById("1").orElse(null);
         System.out.println(detalleCompraBuscar.getPrecio_producto());
     }

@@ -33,10 +33,17 @@ public class DetalleCompra implements Serializable {
     private Integer unidades;
 
     @Column(nullable = false)
-    private Integer precio_producto;
+    private Double precio_producto;
 
     @ManyToOne
     @JoinColumn(nullable = false)
     private Compra compra;
 
+    public DetalleCompra(String codigo, Producto codigo_producto, Integer unidades, Double precio_producto, Compra compra) {
+        this.codigo = codigo;
+        this.codigo_producto = codigo_producto;
+        this.unidades = unidades;
+        this.precio_producto = precio_producto;
+        this.compra = compra;
+    }
 }

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.*;
+import co.edu.uniquindio.proyecto.repositorios.ComentarioRepo;
 import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
     @Autowired
     private UsuarioRepo usuarioRepo;
+
+    @Autowired
+    private ComentarioRepo comentarioRepo;
 
     @Override
     public Usuario registrarUsuario(Usuario u) throws Exception {
@@ -41,7 +45,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     public Usuario actualizarUsuario(Usuario u) throws Exception {
 
         Optional<Usuario> buscado = usuarioRepo.findById(u.getCodigo());
-        if (buscado.isPresent()){
+        if (buscado.isEmpty()){
             throw new Exception("El codigo del usuario no existe");
         }
 
@@ -54,6 +58,12 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         Optional<Usuario> buscado = usuarioRepo.findById(codigo);
         if (buscado.isEmpty()){
             throw new Exception("El codigo del usuario no existe");
+        }
+        System.out.println(buscado.get().getNombre());
+        List<Comentario> comentarios = comentarioRepo.devolverComentariosPorUsuario(codigo);
+
+        for (Comentario comentario : comentarios) {
+            comentarioRepo.deleteById(comentario.getCodigo());
         }
 
         usuarioRepo.deleteById(codigo);

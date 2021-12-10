@@ -43,6 +43,12 @@ public class DetalleProductoBean implements Serializable {
     @Value("#{seguridadBean.usuarioSesion}")
     private Usuario usuarioSesion;
 
+    @Getter @Setter
+    private String unidades;
+
+    @Getter @Setter
+    private String medioDePago;
+
     @PostConstruct
     public void inicializar() {
         nuevoComentario = new Comentario();
@@ -67,6 +73,23 @@ public class DetalleProductoBean implements Serializable {
             }
         }catch (Exception e){
 
+        }
+    }
+
+    public void realizarCompra() {
+        System.out.println("entro aqui");
+        if(usuarioSesion != null) {
+            Integer auxUnidades = 1;
+            medioDePago = "Tarjeta de Debito";
+            try {
+                System.out.println(usuarioSesion.toString());
+                System.out.println(producto.toString());
+                System.out.println(medioDePago);
+                System.out.println(auxUnidades);
+                productoServicio.realizarCompra(usuarioSesion, producto, medioDePago, auxUnidades);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

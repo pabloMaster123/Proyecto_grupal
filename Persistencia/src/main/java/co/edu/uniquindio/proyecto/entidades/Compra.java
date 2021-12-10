@@ -26,6 +26,8 @@ public class Compra implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @GeneratedValue
+
     private String codigo;
 
     @JoinColumn(nullable = false)
@@ -43,4 +45,10 @@ public class Compra implements Serializable {
     @ToString.Exclude
     private List<DetalleCompra> detalleCompras;
 
+
+    public Compra(Usuario codigo_usuario, String medioPago, LocalDate fecha_compra) {
+        this.codigo_usuario = codigo_usuario;
+        this.medioPago = medioPago;
+        this.fecha_compra = fecha_compra;
+    }
 }

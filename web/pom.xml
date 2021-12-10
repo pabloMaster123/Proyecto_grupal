@@ -14,7 +14,7 @@
     <description>Proyecto que contiene la interfaz grafica de usuario (GUI) web para los clientes</description>
 
     <properties>
-        <joinfaces.version>4.4.3</joinfaces.version>
+        <joinfaces.version>4.6.0</joinfaces.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>

@@ -36,4 +36,16 @@ public interface ProductoServicio {
     List<Categoria> listarCategorias();
 
     Categoria obtenerCategoria(String codigo) throws Exception;
+
+    public List<Producto> listarPorCategoria(String categoria);
+
+    public List<Producto> listarPorRangoDePrecio(String rango) throws Exception;
+
+    public List<Producto> listarPorLugar(String ciudad) throws Exception;
+
+    public Integer devolverCantidadDeUnidadesPorId(String id) throws Exception;
+
+    public Integer devolverDescuentoPorId(String id) throws Exception;
+
+    public Compra realizarCompra(Usuario usuario, Producto producto, String medioPago, Integer unidades) throws Exception;
 }

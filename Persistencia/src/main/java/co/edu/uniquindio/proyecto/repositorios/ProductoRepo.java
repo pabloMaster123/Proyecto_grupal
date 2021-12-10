@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.repositorios;
 import co.edu.uniquindio.proyecto.entidades.Categoria;
+import co.edu.uniquindio.proyecto.entidades.Ciudad;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import org.springframework.data.domain.Page;
@@ -33,6 +34,19 @@ public interface ProductoRepo extends JpaRepository<Producto,String>{
 
     @Query("select p from Producto p where :categoria member of p.categorias")
     List<Producto> listarProductoCategoria(Categoria categoria);
+
+    @Query("select p from Producto p where p.precio_producto >= :precioMin and p.precio_producto <= :precioMax")
+    List<Producto> listarProductoRangoDePrecio(Double precioMin, Double precioMax);
+
+    @Query("select p from Producto p where p.ciudad = :ciudad")
+    List<Producto> listarProductoPorCiudad(Ciudad ciudad);
+
+    @Query("select p.unidades_producto from Producto p where p.codigo = :id")
+    Integer devolverCantidadDeUnidadesPorId(String id);
+
+    @Query("select p.descuento from Producto p where p.codigo = :id")
+    Integer devolverDescuentoPorId(String id);
+
 
 //    @Query("select p from Producto p, p.categorias cp where p.nombre_producto = :nombreProducto and cp = :categoria")
 //    Optional<Producto> findByNombreProductoConCategoria(String nombreProducto, Categoria categoria);

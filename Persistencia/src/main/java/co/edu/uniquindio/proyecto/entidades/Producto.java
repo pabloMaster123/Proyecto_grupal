@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -56,10 +57,12 @@ public class Producto implements Serializable {
 
     @ToString.Exclude
     @OneToMany(mappedBy = "producto")
+    @JsonIgnore
     private List<Comentario> comentarios;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "producto")
+    @JsonIgnore
     private List<Subasta> subastas;
 
     @ToString.Exclude
@@ -67,6 +70,7 @@ public class Producto implements Serializable {
     private List<Categoria> categorias;
 
     @ManyToMany
+    @JsonIgnore
     private List<Usuario> usuarios;
 
     @JoinColumn(nullable = false)

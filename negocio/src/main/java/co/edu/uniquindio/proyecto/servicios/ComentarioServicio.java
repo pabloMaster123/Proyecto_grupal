@@ -8,4 +8,6 @@ public interface ComentarioServicio {
 
     void calificarComentario(String id) throws Exception;
 
+    void eliminarComentario(String mensaje) throws Exception;
+
 }
