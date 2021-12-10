@@ -38,21 +38,21 @@ public class ChatTest {
     @Test
     @Sql("classpath:datos.sql")
     public void eliminarTest() {
-        Chat chat = chatRepo.findById("1").orElse(null);
+        Chat chat = chatRepo.findByCodigo(1).orElse(null);
         chatRepo.delete(chat);
-        Chat chatAux = chatRepo.findById("1").orElse(null);
+        Chat chatAux = chatRepo.findByCodigo(1).orElse(null);
         Assertions.assertNull(chatAux);
     }
 
     @Test
     @Sql("classpath:datos.sql")
     public void actualizarTest() {
-        Chat chatAux = chatRepo.findById("97").orElse(null);
+        Chat chatAux = chatRepo.findByCodigo(1).orElse(null);
         if (chatAux == null)
         { System.out.println("No existe chat con el codigo 97");}
-        Chat chat = chatRepo.findById("1").orElse(null);
-        chat.setCodigo("97");
-        Chat chatAux2 = chatRepo.findById("97").orElse(null);
+        Chat chat = chatRepo.findByCodigo(1).orElse(null);
+        chat.setCodigo(97);
+        Chat chatAux2 = chatRepo.findByCodigo(97).orElse(null);
         if (chatAux2 != null) { System.out.println("Si existe un chat con el codigo 97");}
         Assertions.assertNull(chatAux2);
     }
@@ -61,8 +61,8 @@ public class ChatTest {
     @Sql("classpath:datos.sql")
     public void buscarTest() {
 
-        chatRepo.findById("1").orElse(null);
-        Assertions.assertEquals("1",  chatRepo.findById("1").orElse(null).getCodigo());
+        chatRepo.findByCodigo(1).orElse(null);
+        Assertions.assertEquals("1",  chatRepo.findByCodigo(1).orElse(null).getCodigo());
     }
 
 

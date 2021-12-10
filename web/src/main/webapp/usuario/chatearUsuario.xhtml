@@ -7,26 +7,24 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
 <ui:composition template="WEB-INF/template.xhtml">
-<ui:define name="title">Perfil De Usuario</ui:define>
+    <ui:define name="title">Administrador</ui:define>
+    <ui:define name="content">
 
-<ui:define name="content">
-
-        <div >
+        <h1>Lista de Productos</h1>
         <h:form>
-            <p:dataView value="#{perfilBean.listaCompra}" var="compra" gridIcon="pi pi-th-large"
+            <p:dataView value="#{chatearUsuarioBean.usuarios}" var="usuario" gridIcon="pi pi-th-large"
                         listIcon="pipi-bars">
                 <p:dataViewGridItem>
                     <div class="card">
+
                         <div class="card-body">
-                            <h5 class="card-title">#{compra.codigo}</h5>
-                            <p class="card-text">#{compra.codigo_usuario}</p>
-                            <p class="card-text">#{compra.medioPago}</p>
+                            <h5 class="card-title">#{usuario.nombre}</h5>
+                            <p class="card-text">#{usuario.username}</p>
                             <hr/>
                             <p:commandButton value="Ver detalle" styleClass="ui-button-raised"
                                              icon="pi pi-arrow-right" iconPos="right"
-                                             action="#{inicioBean.irADetalle(producto.codigo)}"/>
+                                             action="#{chatearUsuarioBean.chat(usuario.codigo)}"/>
 
                         </div>
                     </div>
@@ -34,27 +32,31 @@
 
                 <p:dataViewListItem>
                     <div class="row d-flex item-pro">
-                        <div class="col-lg-2 col-md-1" style="text-align: center">
-                            <p:graphicImage url="/uploads/#{producto.imagenPrincipal}"
-                                            styleClass="imagen-producto"/>
-                        </div>
+
                         <div class="col-lg-8 col-md-1 align-self-center">
                             <p:outputPanel>
                                 <h:panelGrid columns="2" cellpadding="5">
-                                    <h:outputText value="ID:"/>
-                                    <h:outputText value="#{compra.codigo}" style="font-weight:bold"/>
-                                    <h:outputText value="Codigo Usuario:"/>
-                                    <h:outputText value="#{compra.codigo_usuario}"/>
-                                    <h:outputText value="Medio de pago:"/>
-                                    <h:outputText value="#{compra.medioPago}"/>
+                                    <h:outputText value="Nombre:"/>
+                                    <h:outputText value="#{usuario.nombre}" style="font-weight:bold"/>
+                                    <h:outputText value="Nombre usuario:"/>
+                                    <h:outputText value="#{usuario.username}"/>
+                                    <h:outputText value="Ciudad:"/>
+                                    <h:outputText value="#{usuario.cuidad.nombre}"/>
                                 </h:panelGrid>
                             </p:outputPanel>
                         </div>
+                        <div class="col-lg-2 col-md-1 align-self-center">
+                            <p:commandButton value="Ver detalle" styleClass="ui-button-raised"
+                                             icon="pi pi-arrow-right" iconPos="right"
+                                             action="#{chatearUsuarioBean.chat(usuario.codigo)}"/>
+
+                        </div>
                     </div>
                 </p:dataViewListItem>
+
+
             </p:dataView>
         </h:form>
-        </div>
     </ui:define>
 </ui:composition>
 </html>

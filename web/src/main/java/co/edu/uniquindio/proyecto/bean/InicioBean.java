@@ -1,8 +1,9 @@
 package co.edu.uniquindio.proyecto.bean;
 
-import co.edu.uniquindio.proyecto.entidades.Categoria;
 import co.edu.uniquindio.proyecto.entidades.Producto;
+import co.edu.uniquindio.proyecto.entidades.Subasta;
 import co.edu.uniquindio.proyecto.servicios.ProductoServicio;
+import co.edu.uniquindio.proyecto.servicios.SubastaServicio;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,24 +21,22 @@ public class InicioBean implements Serializable {
     @Autowired
     private ProductoServicio productoServicio;
 
+    @Autowired
+    private SubastaServicio subastaServicio;
+
     @Getter @Setter
     private List<Producto> listaProductos;
 
     @Getter @Setter
-    private Producto producto;
+    private List<Subasta> listaSubastas;
 
     @PostConstruct
     public void inicializar(){
         this.listaProductos = productoServicio.listarProductos();
+        this.listaSubastas = subastaServicio.listaSubastas();
     }
 
     public String irADetalle(String id){
-        try {
-            this.producto = productoServicio.obtenerProducto(id);
-            System.out.println(this.producto.getNombre_producto());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return "detalleProducto?faces-redirect=true&amp;producto="+id;
     }
 

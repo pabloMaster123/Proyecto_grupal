@@ -12,13 +12,13 @@ insert into producto values("1","este producto corta",5,"2025/09/12","cuchillo",
 insert into producto values("2","este producto moja",8,"2025/01/12","mangera",10000,42,"5","4");
 insert into producto values("3","este producto sopla",1,"2025/09/11","soplador",40000,1,"6","3");
 
-insert into chat values("1","1","2");
-insert into chat values("2","1","2");
-insert into chat values("3","1","3");
+insert into chat values("1","2");
+insert into chat values("1","2");
+insert into chat values("1","3");
 
-insert into mensaje values("1","2025/09/12","mesnaje1","1");
-insert into mensaje values("2","2025/09/12","mesnaje2","2");
-insert into mensaje values("3","2025/09/12","mesnaje3","1");
+insert into mensaje values("2025/09/12","mesnaje1","1");
+insert into mensaje values("2025/09/12","mesnaje2","2");
+insert into mensaje values("2025/09/12","mesnaje3","1");
 
 insert into compra values("1","2025/09/12","Tarjeta Credito","1");
 insert into compra values("2","2025/01/12","Debito","1");

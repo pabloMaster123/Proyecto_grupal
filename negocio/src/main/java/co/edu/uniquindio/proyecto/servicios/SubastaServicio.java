@@ -12,7 +12,7 @@ public interface SubastaServicio {
 
     void eliminarSubasta(String codigo) throws Exception;
 
-    List<Subasta> listaUsuarios();
+    List<Subasta> listaSubastas();
 
 
 }

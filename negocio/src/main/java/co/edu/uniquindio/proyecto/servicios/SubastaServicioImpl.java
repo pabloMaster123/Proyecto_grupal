@@ -46,7 +46,7 @@ public class SubastaServicioImpl implements SubastaServicio{
     }
 
     @Override
-    public List<Subasta> listaUsuarios() {
+    public List<Subasta> listaSubastas() {
         return subastaRepo.findAll();
     }
 }
