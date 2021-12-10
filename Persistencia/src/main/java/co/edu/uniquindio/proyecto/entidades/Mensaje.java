@@ -23,7 +23,8 @@ public class Mensaje implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
     @Column(nullable = false)
     private String mensaje;

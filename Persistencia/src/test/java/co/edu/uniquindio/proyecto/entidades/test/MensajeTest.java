@@ -37,18 +37,18 @@ public class MensajeTest {
     @Test
     @Sql("classpath:datos.sql")
     public void eliminarTest() {
-        Mensaje mensaje = mensajeRepo.findById("1").orElse(null);
+        Mensaje mensaje = mensajeRepo.findByCodigo(1).orElse(null);
         mensajeRepo.delete(mensaje);
-        Mensaje mensajeBuscar = mensajeRepo.findById("1").orElse(null);
+        Mensaje mensajeBuscar = mensajeRepo.findByCodigo(1).orElse(null);
         Assertions.assertNull(mensajeBuscar);
     }
 
     @Test
     @Sql("classpath:datos.sql")
     public void actualizarTest() {
-        Mensaje mensaje = mensajeRepo.findById("1").orElse(null);
+        Mensaje mensaje = mensajeRepo.findByCodigo(1).orElse(null);
         mensaje.setMensaje("Cambio mensaje");
-        Mensaje mensajeBuscar = mensajeRepo.findById("1").orElse(null);
+        Mensaje mensajeBuscar = mensajeRepo.findByCodigo(1).orElse(null);
         System.out.println(mensajeBuscar.getMensaje());
     }
 
@@ -56,8 +56,8 @@ public class MensajeTest {
     @Sql("classpath:datos.sql")
     public void buscarTest() {
 
-        mensajeRepo.findById("1").orElse(null);
-        Assertions.assertEquals("1",  mensajeRepo.findById("1").orElse(null).getCodigo());
+        mensajeRepo.findByCodigo(1).orElse(null);
+        Assertions.assertEquals("1",  mensajeRepo.findByCodigo(1).orElse(null).getCodigo());
     }
 
 

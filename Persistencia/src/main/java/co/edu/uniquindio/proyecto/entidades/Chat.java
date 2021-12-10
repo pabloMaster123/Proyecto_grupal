@@ -25,7 +25,8 @@ public class Chat implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
     @JoinColumn(nullable = false)
     @ManyToOne
